@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="80" height="80" viewBox="0 0 80 80">
+  <defs>
+    <clipPath id="clip-path">
+      <circle id="Ellipse_2424" data-name="Ellipse 2424" cx="40" cy="40" r="40" transform="translate(813 724)" fill="none" stroke="#707070" stroke-width="1"/>
+    </clipPath>
+  </defs>
+  <g id="Mask_Group_913" data-name="Mask Group 913" transform="translate(-813 -724)" clip-path="url(#clip-path)">
+    <g id="gold-medal" transform="translate(798.527 722.678)">
+      <path id="Path_103862" data-name="Path 103862" d="M120.665,0H100.108L70.415,43.4H90.972Z" transform="translate(-35.523)" fill="#bf392c"/>
+      <path id="Path_103863" data-name="Path 103863" d="M23.472,0H44.029L73.721,43.4H53.165Z" fill="#e2574c"/>
+      <path id="Path_103864" data-name="Path 103864" d="M76.763,93.887a25.125,25.125,0,1,1-25.125,25.125A25.053,25.053,0,0,1,76.763,93.887Z" transform="translate(-21.314 -71.046)" fill="#fecb45"/>
+      <path id="Path_103865" data-name="Path 103865" d="M98.077,122.053a18.273,18.273,0,1,0,18.273,18.273A18.326,18.326,0,0,0,98.077,122.053Zm0,31.977a13.7,13.7,0,1,1,13.7-13.7A13.745,13.745,0,0,1,98.077,154.03Z" transform="translate(-42.628 -92.36)" fill="#fba635"/>
+    </g>
+  </g>
+</svg>

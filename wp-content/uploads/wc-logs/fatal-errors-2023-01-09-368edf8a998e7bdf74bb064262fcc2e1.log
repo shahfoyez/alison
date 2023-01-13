@@ -1,0 +1,122 @@
+2023-01-09T06:09:58+00:00 CRITICAL Uncaught TypeError: count(): Argument #1 ($value) must be of type Countable|array, string given in C:\xampp\htdocs\unit_customization_dashboard\wp-content\plugins\vibe-course-module\includes\bp-course-actions.php:1430
+Stack trace:
+#0 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\class-wp-hook.php(309): BP_Course_Action->bp_course_enable_access(493)
+#1 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\class-wp-hook.php(331): WP_Hook->apply_filters(NULL, Array)
+#2 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\plugin.php(474): WP_Hook->do_action(Array)
+#3 C:\xampp\htdocs\unit_customization_dashboard\wp-content\plugins\woocommerce\includes\class-wc-order.php(363): do_action('woocommerce_ord...', 493, Object(Automattic\WooCommerce\Admin\Overrides\Order))
+#4 C:\xampp\htdocs\unit_customization_dashboard\wp-content\plugins\woocommerce\includes\class-wc-order.php(221): WC_Order->status_transition()
+#5 C:\xampp\htdocs\unit_customization_dashboard\wp-content\plugins\woocommerce\includes\class-wc-order.php(119): WC_Order->save()
+#6 C:\xampp\htdocs\unit_customization_dashboard\wp-content\plugins\woocommerce\includes\class-wc-checkout.php(961): WC_Order->payment_complete()
+#7 C:\xampp\htdocs\unit_customization_dashboard\wp-content\plugins\woocommerce\includes\class-wc-checkout.php(1143): WC_Checkout->process_order_without_payment(493)
+#8 C:\xampp\htdocs\unit_customization_dashboard\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(464): WC_Checkout->process_checkout()
+#9 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\class-wp-hook.php(307): WC_AJAX::checkout('')
+#10 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\class-wp-hook.php(331): WP_Hook->apply_filters('', Array)
+#11 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\plugin.php(474): WP_Hook->do_action(Array)
+#12 C:\xampp\htdocs\unit_customization_dashboard\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(89): do_action('wc_ajax_checkou...')
+#13 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\class-wp-hook.php(307): WC_AJAX::do_wc_ajax('')
+#14 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\class-wp-hook.php(331): WP_Hook->apply_filters(false, Array)
+#15 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\plugin.php(474): WP_Hook->do_action(Array)
+#16 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\template-loader.php(13): do_action('template_redire...')
+#17 C:\xampp\htdocs\unit_customization_dashboard\wp-blog-header.php(19): require_once('C:\\xampp\\htdocs...')
+#18 C:\xampp\htdocs\unit_customization_dashboard\index.php(17): require('C:\\xampp\\htdocs...')
+#19 {main}
+  thrown in C:\xampp\htdocs\unit_customization_dashboard\wp-content\plugins\vibe-course-module\includes\bp-course-actions.php on line 1430
+
+2023-01-09T06:36:50+00:00 CRITICAL Uncaught Error: Call to undefined function dd() in C:\xampp\htdocs\unit_customization_dashboard\wp-content\themes\wplms-child\templates\profile\top.php:10
+Stack trace:
+#0 C:\xampp\htdocs\unit_customization_dashboard\wp-content\themes\wplms\includes\init.php(1026): include_once()
+#1 C:\xampp\htdocs\unit_customization_dashboard\wp-content\themes\wplms\members\single\dashboard.php(17): vibe_include_template('profile/top.php')
+#2 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\template.php(770): require_once('C:\\xampp\\htdocs...')
+#3 C:\xampp\htdocs\unit_customization_dashboard\wp-content\plugins\buddypress\bp-core\bp-core-catchuri.php(493): load_template('C:\\xampp\\htdocs...')
+#4 C:\xampp\htdocs\unit_customization_dashboard\wp-content\plugins\wplms-dashboard\includes\functions.php(33): bp_core_load_template('members/single/...')
+#5 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\class-wp-hook.php(307): wplms_dashboard_template('')
+#6 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\class-wp-hook.php(331): WP_Hook->apply_filters('', Array)
+#7 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\plugin.php(474): WP_Hook->do_action(Array)
+#8 C:\xampp\htdocs\unit_customization_dashboard\wp-content\plugins\buddypress\bp-core\bp-core-dependency.php(359): do_action('bp_screens')
+#9 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\class-wp-hook.php(307): bp_screens('')
+#10 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\class-wp-hook.php(331): WP_Hook->apply_filters(NULL, Array)
+#11 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\plugin.php(474): WP_Hook->do_action(Array)
+#12 C:\xampp\htdocs\unit_customization_dashboard\wp-content\plugins\buddypress\bp-core\bp-core-dependency.php(416): do_action('bp_template_red...')
+#13 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\class-wp-hook.php(307): bp_template_redirect('')
+#14 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\class-wp-hook.php(331): WP_Hook->apply_filters(NULL, Array)
+#15 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\plugin.php(474): WP_Hook->do_action(Array)
+#16 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\template-loader.php(13): do_action('template_redire...')
+#17 C:\xampp\htdocs\unit_customization_dashboard\wp-blog-header.php(19): require_once('C:\\xampp\\htdocs...')
+#18 C:\xampp\htdocs\unit_customization_dashboard\index.php(17): require('C:\\xampp\\htdocs...')
+#19 {main}
+  thrown in C:\xampp\htdocs\unit_customization_dashboard\wp-content\themes\wplms-child\templates\profile\top.php on line 10
+
+2023-01-09T06:37:23+00:00 CRITICAL Uncaught Error: Call to undefined function dd() in C:\xampp\htdocs\unit_customization_dashboard\wp-content\themes\wplms-child\templates\profile\top.php:10
+Stack trace:
+#0 C:\xampp\htdocs\unit_customization_dashboard\wp-content\themes\wplms\includes\init.php(1026): include_once()
+#1 C:\xampp\htdocs\unit_customization_dashboard\wp-content\themes\wplms\members\single\dashboard.php(17): vibe_include_template('profile/top.php')
+#2 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\template.php(770): require_once('C:\\xampp\\htdocs...')
+#3 C:\xampp\htdocs\unit_customization_dashboard\wp-content\plugins\buddypress\bp-core\bp-core-catchuri.php(493): load_template('C:\\xampp\\htdocs...')
+#4 C:\xampp\htdocs\unit_customization_dashboard\wp-content\plugins\wplms-dashboard\includes\functions.php(33): bp_core_load_template('members/single/...')
+#5 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\class-wp-hook.php(307): wplms_dashboard_template('')
+#6 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\class-wp-hook.php(331): WP_Hook->apply_filters('', Array)
+#7 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\plugin.php(474): WP_Hook->do_action(Array)
+#8 C:\xampp\htdocs\unit_customization_dashboard\wp-content\plugins\buddypress\bp-core\bp-core-dependency.php(359): do_action('bp_screens')
+#9 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\class-wp-hook.php(307): bp_screens('')
+#10 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\class-wp-hook.php(331): WP_Hook->apply_filters(NULL, Array)
+#11 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\plugin.php(474): WP_Hook->do_action(Array)
+#12 C:\xampp\htdocs\unit_customization_dashboard\wp-content\plugins\buddypress\bp-core\bp-core-dependency.php(416): do_action('bp_template_red...')
+#13 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\class-wp-hook.php(307): bp_template_redirect('')
+#14 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\class-wp-hook.php(331): WP_Hook->apply_filters(NULL, Array)
+#15 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\plugin.php(474): WP_Hook->do_action(Array)
+#16 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\template-loader.php(13): do_action('template_redire...')
+#17 C:\xampp\htdocs\unit_customization_dashboard\wp-blog-header.php(19): require_once('C:\\xampp\\htdocs...')
+#18 C:\xampp\htdocs\unit_customization_dashboard\index.php(17): require('C:\\xampp\\htdocs...')
+#19 {main}
+  thrown in C:\xampp\htdocs\unit_customization_dashboard\wp-content\themes\wplms-child\templates\profile\top.php on line 10
+
+2023-01-09T06:55:51+00:00 CRITICAL syntax error, unexpected token "\", expecting end of file in C:\xampp\htdocs\unit_customization_dashboard\wp-content\themes\wplms-child\templates\profile\top.php on line 15
+
+2023-01-09T07:07:52+00:00 CRITICAL Uncaught Error: Object of class WP_Error could not be converted to string in C:\xampp\htdocs\unit_customization_dashboard\wp-content\themes\wplms-child\templates\profile\top.php:9
+Stack trace:
+#0 C:\xampp\htdocs\unit_customization_dashboard\wp-content\themes\wplms\includes\init.php(1026): include_once()
+#1 C:\xampp\htdocs\unit_customization_dashboard\wp-content\themes\wplms\members\single\dashboard.php(17): vibe_include_template('profile/top.php')
+#2 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\template.php(770): require_once('C:\\xampp\\htdocs...')
+#3 C:\xampp\htdocs\unit_customization_dashboard\wp-content\plugins\buddypress\bp-core\bp-core-catchuri.php(493): load_template('C:\\xampp\\htdocs...')
+#4 C:\xampp\htdocs\unit_customization_dashboard\wp-content\plugins\wplms-dashboard\includes\functions.php(33): bp_core_load_template('members/single/...')
+#5 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\class-wp-hook.php(307): wplms_dashboard_template('')
+#6 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\class-wp-hook.php(331): WP_Hook->apply_filters('', Array)
+#7 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\plugin.php(474): WP_Hook->do_action(Array)
+#8 C:\xampp\htdocs\unit_customization_dashboard\wp-content\plugins\buddypress\bp-core\bp-core-dependency.php(359): do_action('bp_screens')
+#9 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\class-wp-hook.php(307): bp_screens('')
+#10 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\class-wp-hook.php(331): WP_Hook->apply_filters(NULL, Array)
+#11 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\plugin.php(474): WP_Hook->do_action(Array)
+#12 C:\xampp\htdocs\unit_customization_dashboard\wp-content\plugins\buddypress\bp-core\bp-core-dependency.php(416): do_action('bp_template_red...')
+#13 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\class-wp-hook.php(307): bp_template_redirect('')
+#14 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\class-wp-hook.php(331): WP_Hook->apply_filters(NULL, Array)
+#15 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\plugin.php(474): WP_Hook->do_action(Array)
+#16 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\template-loader.php(13): do_action('template_redire...')
+#17 C:\xampp\htdocs\unit_customization_dashboard\wp-blog-header.php(19): require_once('C:\\xampp\\htdocs...')
+#18 C:\xampp\htdocs\unit_customization_dashboard\index.php(17): require('C:\\xampp\\htdocs...')
+#19 {main}
+  thrown in C:\xampp\htdocs\unit_customization_dashboard\wp-content\themes\wplms-child\templates\profile\top.php on line 9
+
+2023-01-09T08:17:49+00:00 CRITICAL Uncaught Error: Object of class WP_Error could not be converted to string in C:\xampp\htdocs\unit_customization_dashboard\wp-content\themes\wplms-child\templates\profile\top.php:9
+Stack trace:
+#0 C:\xampp\htdocs\unit_customization_dashboard\wp-content\themes\wplms\includes\init.php(1026): include_once()
+#1 C:\xampp\htdocs\unit_customization_dashboard\wp-content\themes\wplms\members\single\dashboard.php(17): vibe_include_template('profile/top.php')
+#2 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\template.php(770): require_once('C:\\xampp\\htdocs...')
+#3 C:\xampp\htdocs\unit_customization_dashboard\wp-content\plugins\buddypress\bp-core\bp-core-catchuri.php(493): load_template('C:\\xampp\\htdocs...')
+#4 C:\xampp\htdocs\unit_customization_dashboard\wp-content\plugins\wplms-dashboard\includes\functions.php(33): bp_core_load_template('members/single/...')
+#5 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\class-wp-hook.php(307): wplms_dashboard_template('')
+#6 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\class-wp-hook.php(331): WP_Hook->apply_filters('', Array)
+#7 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\plugin.php(474): WP_Hook->do_action(Array)
+#8 C:\xampp\htdocs\unit_customization_dashboard\wp-content\plugins\buddypress\bp-core\bp-core-dependency.php(359): do_action('bp_screens')
+#9 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\class-wp-hook.php(307): bp_screens('')
+#10 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\class-wp-hook.php(331): WP_Hook->apply_filters(NULL, Array)
+#11 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\plugin.php(474): WP_Hook->do_action(Array)
+#12 C:\xampp\htdocs\unit_customization_dashboard\wp-content\plugins\buddypress\bp-core\bp-core-dependency.php(416): do_action('bp_template_red...')
+#13 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\class-wp-hook.php(307): bp_template_redirect('')
+#14 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\class-wp-hook.php(331): WP_Hook->apply_filters(NULL, Array)
+#15 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\plugin.php(474): WP_Hook->do_action(Array)
+#16 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\template-loader.php(13): do_action('template_redire...')
+#17 C:\xampp\htdocs\unit_customization_dashboard\wp-blog-header.php(19): require_once('C:\\xampp\\htdocs...')
+#18 C:\xampp\htdocs\unit_customization_dashboard\index.php(17): require('C:\\xampp\\htdocs...')
+#19 {main}
+  thrown in C:\xampp\htdocs\unit_customization_dashboard\wp-content\themes\wplms-child\templates\profile\top.php on line 9
+

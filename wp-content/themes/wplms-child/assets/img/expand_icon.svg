@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 13 13">
+  <g id="expand_icon" data-name="expand icon" transform="translate(-3.5 -3.5)">
+    <path id="Path_45831" data-name="Path 45831" d="M4.446,7.346A.446.446,0,0,0,4.892,6.9V4.892H6.9A.446.446,0,0,0,6.9,4H4.446A.446.446,0,0,0,4,4.446V6.9A.446.446,0,0,0,4.446,7.346Z" fill="#5d676e" stroke="#5d676e" stroke-width="1"/>
+    <path id="Path_45832" data-name="Path 45832" d="M47.9,7.346a.446.446,0,0,0,.446-.446V4.446A.446.446,0,0,0,47.9,4H45.446a.446.446,0,1,0,0,.892h2.008V6.9A.446.446,0,0,0,47.9,7.346Z" transform="translate(-32.346)" fill="#5d676e" stroke="#5d676e" stroke-width="1"/>
+    <path id="Path_45833" data-name="Path 45833" d="M4,47.9a.446.446,0,0,0,.446.446H6.9a.446.446,0,1,0,0-.892H4.892V45.446a.446.446,0,1,0-.892,0Z" transform="translate(0 -32.346)" fill="#5d676e" stroke="#5d676e" stroke-width="1"/>
+    <path id="Path_45834" data-name="Path 45834" d="M45.446,48.346H47.9a.446.446,0,0,0,.446-.446V45.446a.446.446,0,1,0-.892,0v2.008H45.446a.446.446,0,1,0,0,.892Z" transform="translate(-32.346 -32.346)" fill="#5d676e" stroke="#5d676e" stroke-width="1"/>
+  </g>
+</svg>
