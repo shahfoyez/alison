@@ -82,6 +82,9 @@ if (in_array('student', (array) $user->roles)) {
             font-weight: 600;
             width: 100%;
         }
+        form#header-search-form {
+            display: none;
+        }
     </style>
     <div class="ar-main-content">
         <div class="ar-sidebar" id="#ar-id-side">

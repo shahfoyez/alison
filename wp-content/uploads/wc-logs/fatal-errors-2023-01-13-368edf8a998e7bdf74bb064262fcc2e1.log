@@ -26,3 +26,5 @@ Stack trace:
 #21 {main}
   thrown in C:\xampp\htdocs\unit_customization_dashboard\wp-content\themes\wplms-child\classes\for_you.php on line 137
 
+2023-01-13T10:11:04+00:00 CRITICAL syntax error, unexpected token ";", expecting ")" in C:\xampp\htdocs\unit_customization_dashboard\wp-content\themes\wplms-child\classes\for_you.php on line 165
+

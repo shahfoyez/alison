@@ -137,36 +137,191 @@ class ForYou {
         //     WHERE ID IN (" . implode(',', $course_ids) . ") AND post_type = 'course'
         // ");
 
-        $args = array(
-            'post_type' => 'course',
-            'tax_query' => array(
-                'relation' => 'AND',
-                array(
-                    'taxonomy' => 'course-cat',
-                    'field'    => 'term_id',
-                    'terms'    => $cats,
-                ),
-                array(
-                    'taxonomy' => 'course-cat',
-                    'field'    => 'term_id',
-                    'terms'    => $subs,
-                ),
-            ),
-            'orderby' => 'title',
-            'order'   => 'ASC',
-            'groupby' => 'title'
-        );
-        $query = new WP_Query( $args );
+        // $args = array(
+        //     'post_type' => 'course',
+        //     'tax_query' => array(
+        //         'relation' => 'AND',
+        //         array(
+        //             'taxonomy' => 'course-cat',
+        //             'field'    => 'term_id',
+        //             'terms'    => $cats,
+        //         ),
+        //         array(
+        //             'taxonomy' => 'course-cat',
+        //             'field'    => 'term_id',
+        //             'terms'    => $subs,
+        //         ),
+        //     ),
+        //     'orderby' => 'title',
+        //     'order'   => 'ASC',
+        //     'groupby' => 'title'
+        // );
+        // $query = new WP_Query( $args );
         // var_dump($query);
+    
+        /* ensure that the WPLMS plugin is active */
+        global $wpdb;
 
-        if ( $query->have_posts() ) {
-            while ( $query->have_posts() ) {
-                $query->the_post();
-                // var_dump(the_content());
-            }
-        } else {
-            // No courses found
+
+        // $args = array(
+        //     'post_type' => 'course',
+        //     'tax_query' => array(
+        //         'relation' => 'AND',
+        //         array(
+        //             'taxonomy' => 'course-cat',
+        //             'field' => 'term_id',
+        //             'terms' => $cats,
+        //         ),
+        //         array(
+        //             'taxonomy' => 'course-cat',
+        //             'field' => 'term_id',
+        //             'terms' => $subs,
+        //             'include_children' => false,
+        //         )
+        //     ),
+        // );
+        // $query = new WP_Query( $args );
+        
+        // $categories = array();
+        // if ( $query->have_posts() ) {
+        //     while ( $query->have_posts() ) {
+        //         $query->the_post();
+        //         $terms = wp_get_post_terms( get_the_ID(), 'course-cat' );
+        //         foreach ( $terms as $term ) {
+        //             if ( ! isset( $categories[ $term->term_id ] ) ) {
+        //                 $categories[ $term->term_id ] = array(
+        //                     'name' => $term->name,
+        //                     'courses' => array(),
+        //                 );
+        //             }
+        //             $categories[ $term->term_id ]['courses'][] = get_the_title();
+        //         }
+        //     }
+        //     wp_reset_postdata();
+        // }
+     
+        global $wpdb;
+
+$courses = $wpdb->get_results(
+    $wpdb->prepare("
+        SELECT *, t.name as parent_name
+        FROM wp_posts p
+        INNER JOIN wp_term_relationships tr ON (p.ID = tr.object_id)
+        INNER JOIN wp_term_taxonomy tt ON (tr.term_taxonomy_id = tt.term_taxonomy_id)
+        INNER JOIN wp_terms t ON (tt.term_id = t.term_id)
+        WHERE p.post_type = 'course'
+        AND tt.taxonomy = 'course-cat'
+        AND (tt.term_id IN (175,176,177,164,169,163,165,166,170 ))
+        ORDER BY t.name ASC
+    ")
+);
+
+if ( $courses ) {
+    $curParent = '';
+    $oldParent = '';
+    $catCourse = [];
+    foreach ( $courses as $course ) {
+        // $curParent = $course->parent;
+        $curParent = get_term( $course->parent, 'course-cat' )->name;
+        // var_dump(get_the_terms( 47, 'course-cat' ));
+        if($curParent != $oldParent){
+            $catCourse[$curParent] = array();
+           
+            $oldParent = get_term( $course->parent, 'course-cat' )->name;
+            echo '<h2>' .  get_term( $course->parent, 'course-cat' )->name . '</h2>';
         }
+        array_push($catCourse[$curParent], $course);
+        // echo '<h2>' . $course->parent_name . '</h2>';
+        echo '<h3>' . $course->post_title . '</h3>';
+    }
+} else {
+    echo 'No courses found.';
+}
+
+// foreach($curriculams as $curriculam){
+//     if(!is_numeric($curriculam)){
+//         $unitArray[$curriculam] = array();
+//         $curCurriculam = $curriculam; 
+//     }if(is_numeric($curriculam)){
+//         $post = get_post($curriculam);
+//         array_push($unitArray[$curCurriculam??$defaultSection], $post);
+//     }
+// }
+// dd( $unitArray);
+
+// if ( $courses ) {
+//     foreach ( $courses as $course ) {
+
+//         echo '<h2>' . $course->parent_name . '</h2>';
+//         echo '<h3>' . $course->post_title . '</h3>';
+//     }
+// } else {
+//     echo 'No courses found.';
+// }
+        echo '<pre>';
+        // dd($catCourse);
+        echo '</pre>';
+        // $categories = array(46,47,48);
+        // $sub_categories = array(175,176,177,164,169,163,165,166,170);
+
+        // $courses = $wpdb->get_results(
+        //     "
+        //     SELECT c.post_title as course_name, c.ID as course_id, c.post_parent as sub_category_id, cat.post_title as category_name
+        //     FROM wp_posts c, wp_posts cat
+        //     WHERE c.post_type = 'course' and c.post_status = 'publish'  and c.post_parent in (175,176,177,164,169,163,165,166,170) and cat.ID = c.post_parent and cat.post_type = 'course-category' and cat.post_parent IN (46,47,48)
+        //     GROUP BY cat.post_title, c.post_parent
+        //     "
+        // );
+        
+        // $categories = array();
+        // foreach ($courses as $course) {
+        //     if (!isset($categories[$course->category_name])) {
+        //         $categories[$course->category_name] = array();
+        //     }
+        //     $categories[$course->category_name][] = array(
+        //         'course_name' => $course->course_name,
+        //         'course_id' => $course->course_id,
+        //         'sub_category_id' => $course->sub_category_id
+        //     );
+        // }
+
+
+        // $courses = $wpdb->get_results( "
+        // SELECT p.ID, p.post_title, t1.name as category, t2.name as sub_category 
+        // FROM wp_posts p 
+        // LEFT JOIN wp_term_relationships tr1 ON p.ID = tr1.object_id
+        // LEFT JOIN wp_term_taxonomy tt1 ON tr1.term_taxonomy_id = tt1.term_taxonomy_id
+        // LEFT JOIN wp_terms t1 ON tt1.term_id = t1.term_id
+        // LEFT JOIN wp_term_relationships tr2 ON p.ID = tr2.object_id
+        // LEFT JOIN wp_term_taxonomy tt2 ON tr2.term_taxonomy_id = tt2.term_taxonomy_id
+        // LEFT JOIN wp_terms t2 ON tt2.term_id = t2.term_id
+        // WHERE p.post_type = 'course'
+        // GROUP BY category,sub_category" );
+        // $courses = $wpdb->get_results("
+        //     SELECT p.ID, p.post_title 
+        //     FROM wp_posts p 
+        //     WHERE p.post_type = 'course'
+        // ");
+
+        // if($courses){
+        //     foreach ($courses as $course) {
+        //     echo '<h3>' . $course->category . '</h3>';
+        //     echo '<ul>';
+        //     echo '<li>' . $course->post_title . ' (' . $course->sub_category . ') </li>';
+        //     echo '</ul>';
+        //     }
+        // }else{
+        //     echo "No courses found.";
+        // }
+     
+        // if ( $query->have_posts() ) {
+        //     while ( $query->have_posts() ) {
+        //         $query->the_post();
+        //         var_dump("Hello".the_title());
+        //     }
+        // } else {
+        //     // No courses found
+        // }
 
 
         // global $wpdb;
@@ -194,7 +349,7 @@ class ForYou {
         // var_dump($cats);
         // var_dump($cats);
         // var_dump($subs);
-        var_dump($query);
+        // var_dump($query);
 
 
         echo '</pre>';
