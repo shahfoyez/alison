@@ -99,17 +99,20 @@ class ForYou {
                 ORDER BY tt.parent DESC
             ")
         );
-        // echo '<pre>';
-        // dd($courses);
-        // echo '</pre>';
-        $catCourse = [];
 
+        $catCourse = [];
         if ( $courses ) {
             $curParent = '';
             $oldParent = '';
+            $curPostId = '';
+            $oldPostId = '';
+            $pid = '';
+            $opid = '';
+
             foreach ( $courses as $course ) {
                 // get the parent name 
                 $curParent = get_term( $course->parent, 'course-cat' )->name;
+                $curPostId = $course->ID;
                 // check if the parent is different
                 if($curParent != $oldParent){
                     // check if category key already exists
@@ -119,11 +122,40 @@ class ForYou {
                     }  
                     $oldParent = get_term( $course->parent, 'course-cat' )->name;
                 }
-                array_push($catCourse[$curParent], $course);
+                // check if current category already has same course
+                $filtered = array_filter($catCourse[$curParent], function($post) use($curPostId ){
+                    return $post->ID == $curPostId;
+                });
+                if(!count($filtered)>0){
+                    array_push($catCourse[$curParent], $course);
+                } 
             }
             return $catCourse;
         } else {
             return $catCourse;
+        }
+    }
+    public function resetForm($userId){
+        global $wpdb;
+        $query = $wpdb->prepare( "
+            DELETE 
+            FROM wp_for_you 
+            WHERE user_id = %d", 
+            $userId
+        );
+        $result = $wpdb->query($query);
+
+        if($result === false) {
+            $msg="<span class='foy-error'>Error deleting your record!</span>";
+			return $msg;
+        } elseif($result === 0) {
+            $msg="<span class='foy-error'>No record found found!</span>";
+			return $msg;
+            header('Location: index2.php', true, 303);
+            exit;
+        } else {
+            $msg="<span class='foy-success'>Record deleted successfully!</span>";
+			return $msg;
         }
     }
 
