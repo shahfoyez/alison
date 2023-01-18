@@ -8,13 +8,15 @@ $for_you_obj = new ForYou();
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['for_you_submit'])) {
         $dataInsert = $for_you_obj->insert($_POST, $userId);
-        if ($dataInsert) {
-?>
-            <!-- <script>location.reload();</script>  -->
-<?php
-        }
     }
 }
+?>
+<?php
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        if(isset($_POST['foy-reset'])){
+            $resetForm = $for_you_obj->resetForm($userId);
+        }
+    }
 ?>
 <?php
 // check if user already submitted the form and get recommended courses
@@ -111,49 +113,39 @@ if (in_array('student', (array) $user->roles)) {
                 <a class="user-profile-link"><span class="new-badge"><?php echo $user->user_email; ?></span></a>
                 <h6 class="user-id">User Id : <span><?php echo $user_id; ?></span> </h6>
             </div>
-
             <ul class="menu-list" id="idforactive">
-
-
                 <li class="common-design">
                     <a href="#tab_default_1" data-toggle="tab" class="common-design-2">
                         <i class="fa fa-heart side-icon" aria-hidden="true"></i> For You
                     </a>
                 </li>
-
                 <li class="common-design activemenu">
                     <a href="#tab_default_2" data-toggle="tab" class="common-design-2">
                         <i class="fa fa-th side-icon" aria-hidden="true"></i> Dashboard
                     </a>
                 </li>
                 <hr class="hrwdth">
-
                 <li class="common-design">
                     <a href="#tab_default_5" data-toggle="tab" class="common-design-2">
                         <i class="fa fa-magic  side-icon"></i> Upgrade to Premium
                     </a>
                 </li>
-
                 <li class="common-design">
                     <a href="#tab_default_6" data-toggle="tab" class="common-design-2">
                         <i class="fa fa-trophy  side-icon"></i> Get Certification
                     </a>
                 </li>
-
                 <hr class="hrwdth">
-
                 <li class="common-design">
                     <a href="#tab_default_7" data-toggle="tab" class="common-design-2">
                         <i class="fa fa-cogs  side-icon"></i> Account Settings
                     </a>
                 </li>
-
                 <li class="common-design">
                     <a href="#tab_default_8" data-toggle="tab" class="common-design-2">
                         <i class="fa fa-plus-square  side-icon"></i> Help
                     </a>
                 </li>
-
             </ul>
             <a href="<?php echo wp_logout_url(home_url()); ?>" class="common-design-2 logout-link">
                 <i class="fa fa-power-off  side-icon"></i> Logout
@@ -182,7 +174,12 @@ if (in_array('student', (array) $user->roles)) {
                     }
                     // if user submission is not null
                     elseif (isset($dataSubmitted) && $dataSubmitted != null) { ?>
+                        
                         <div class="container">
+                            <form action="" method="POST">
+                                <button type="submit" name="foy-reset" value="Reset">Reset</button>
+                            </form>
+                             
                             <?php
                             if ($userRecommendedCourses != null) {
                                 foreach ($userRecommendedCourses as $key => $categories) { ?>
@@ -550,6 +547,9 @@ if (in_array('student', (array) $user->roles)) {
                         <?php
                         if (isset($dataInsert)) {
                             echo $dataInsert;
+                        }
+                        if (isset($resetForm)) {
+                            echo $resetForm;
                         }
                         ?>
                         <?php
