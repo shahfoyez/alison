@@ -151,8 +151,6 @@ class ForYou {
         } elseif($result === 0) {
             $msg="<span class='foy-error'>No record found found!</span>";
 			return $msg;
-            header('Location: index2.php', true, 303);
-            exit;
         } else {
             $msg="<span class='foy-success'>Record deleted successfully!</span>";
 			return $msg;

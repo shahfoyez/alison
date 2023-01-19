@@ -1,29 +1,30 @@
 <?php
-require_once get_stylesheet_directory() . '/classes/for_you.php';
-global $wpdb;
-$user = wp_get_current_user();
-$userId = $user->id;
-$for_you_obj = new ForYou();
-// submit the form and insert data
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (isset($_POST['for_you_submit'])) {
-        $dataInsert = $for_you_obj->insert($_POST, $userId);
-    }
-}
-?>
-<?php
-    if($_SERVER['REQUEST_METHOD'] == 'POST'){
-        if(isset($_POST['foy-reset'])){
-            $resetForm = $for_you_obj->resetForm($userId);
+    require_once get_stylesheet_directory() . '/classes/for_you.php';
+    global $wpdb;
+    $user = wp_get_current_user();
+    $userId = $user->id;
+    $for_you_obj = new ForYou();
+    // submit the form and insert data
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if (isset($_POST['for_you_submit'])) {
+            $dataInsert = $for_you_obj->insert($_POST, $userId);
         }
     }
 ?>
 <?php
-// check if user already submitted the form and get recommended courses
-$dataSubmitted = $for_you_obj->getUserSubmit($userId);
-if ($dataSubmitted != null) {
-    $userRecommendedCourses = $for_you_obj->userRecommendedCourses($dataSubmitted[0]);
-}
+    // reset for you form data
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        if(isset($_POST['foy-reset'])){
+            $resetForm = $for_you_obj->resetForm($userId);  
+        }
+    }
+?>
+<?php
+    // check if user already submitted the form and get recommended courses
+    $dataSubmitted = $for_you_obj->getUserSubmit($userId);
+    if ($dataSubmitted != null) {
+        $userRecommendedCourses = $for_you_obj->userRecommendedCourses($dataSubmitted[0]);
+    }
 ?>
 <?php
 if (in_array('student', (array) $user->roles)) {
@@ -35,7 +36,8 @@ if (in_array('student', (array) $user->roles)) {
         WHERE   posts.post_type   = %s
         AND   posts.post_status   = %s
         AND   meta.user_id   = %d
-        ", time(), 'course', 'publish', $user_id)));
+        ", time(), 'course', 'publish', $user_id)
+    ));
 
     if ($pageposts) {
         $singleCourseArray = [];
