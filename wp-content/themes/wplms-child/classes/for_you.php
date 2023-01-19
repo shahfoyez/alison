@@ -106,9 +106,7 @@ class ForYou {
             $oldParent = '';
             $curPostId = '';
             $oldPostId = '';
-            $pid = '';
-            $opid = '';
-
+            
             foreach ( $courses as $course ) {
                 // get the parent name 
                 $curParent = get_term( $course->parent, 'course-cat' )->name;
@@ -156,5 +154,4 @@ class ForYou {
 			return $msg;
         }
     }
-
 }
