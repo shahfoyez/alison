@@ -2,7 +2,7 @@
 /**
  * All functionality to regenerate images in the background when settings change.
  *
- * @package WooCommerce/Classes
+ * @package WooCommerce\Classes
  * @version 3.3.0
  * @since   3.3.0
  */
@@ -145,16 +145,6 @@ class WC_Regenerate_Images_Request extends WC_Background_Process {
 					$new_metadata['sizes'][ $old_size ] = $old_metadata['sizes'][ $old_size ];
 				}
 			}
-			// Handle legacy sizes.
-			if ( isset( $new_metadata['sizes']['shop_thumbnail'], $new_metadata['sizes']['woocommerce_gallery_thumbnail'] ) ) {
-				$new_metadata['sizes']['shop_thumbnail'] = $new_metadata['sizes']['woocommerce_gallery_thumbnail'];
-			}
-			if ( isset( $new_metadata['sizes']['shop_catalog'], $new_metadata['sizes']['woocommerce_thumbnail'] ) ) {
-				$new_metadata['sizes']['shop_catalog'] = $new_metadata['sizes']['woocommerce_thumbnail'];
-			}
-			if ( isset( $new_metadata['sizes']['shop_single'], $new_metadata['sizes']['woocommerce_single'] ) ) {
-				$new_metadata['sizes']['shop_single'] = $new_metadata['sizes']['woocommerce_single'];
-			}
 		}
 
 		// Update the meta data with the new size values.
@@ -241,7 +231,16 @@ class WC_Regenerate_Images_Request extends WC_Background_Process {
 	 * @return array
 	 */
 	public function adjust_intermediate_image_sizes( $sizes ) {
-		return apply_filters( 'woocommerce_regenerate_images_intermediate_image_sizes', array( 'woocommerce_thumbnail', 'woocommerce_gallery_thumbnail', 'woocommerce_single' ) );
+		// Prevent a filter loop.
+		$unfiltered_sizes = array( 'woocommerce_thumbnail', 'woocommerce_gallery_thumbnail', 'woocommerce_single' );
+		static $in_filter = false;
+		if ( $in_filter ) {
+			return $unfiltered_sizes;
+		}
+		$in_filter      = true;
+		$filtered_sizes = apply_filters( 'woocommerce_regenerate_images_intermediate_image_sizes', $unfiltered_sizes );
+		$in_filter      = false;
+		return $filtered_sizes;
 	}
 
 	/**

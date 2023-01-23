@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @class       WC_Gateway_Cheque
  * @extends     WC_Payment_Gateway
  * @version     2.1.0
- * @package     WooCommerce/Classes/Payment
+ * @package     WooCommerce\Classes\Payment
  */
 class WC_Gateway_Cheque extends WC_Payment_Gateway {
 
@@ -62,7 +62,7 @@ class WC_Gateway_Cheque extends WC_Payment_Gateway {
 			),
 			'title'        => array(
 				'title'       => __( 'Title', 'woocommerce' ),
-				'type'        => 'text',
+				'type'        => 'safe_text',
 				'description' => __( 'This controls the title which the user sees during checkout.', 'woocommerce' ),
 				'default'     => _x( 'Check payments', 'Check payment method', 'woocommerce' ),
 				'desc_tip'    => true,

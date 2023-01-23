@@ -31,7 +31,6 @@ get_header('blank');
  * @hooked woocommerce_output_content_wrapper - 10 (outputs opening divs for the content)
  * @hooked woocommerce_breadcrumb - 20
  */
-$user_id = get_current_user_id();
 ?>
 
 <style>
@@ -805,7 +804,7 @@ $user_id = get_current_user_id();
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-3 col-sm-6 unit_sidebar">
-                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/Screenshot_1.png" alt="">
+            <?php echo do_shortcode('[foy_left_add]')?>
             </div>
             <div class="col-md-6 col-sm-12 xcourse_content_panel">
                 <?php do_action('wplms_before_course_main_content'); ?>
@@ -834,7 +833,7 @@ $user_id = get_current_user_id();
                 </div>
             </div>
             <div class="col-md-3 col-sm-6 unit_sidebar">
-                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/Screenshot_2.png" alt="">
+                <?php echo do_shortcode('[foy_left_add]')?>
             </div>
             <div class="forMobileSidebarAds"></div>
             <!-- <div id="hideshow_course_pursue_panel"><span></span></div> -->
@@ -861,69 +860,80 @@ $user_id = get_current_user_id();
 </section>
 
 
+<?php
+    // $sub = get_user_subscription();
+    $sub = 0;
+?>
+<?php
+if($sub == 0){ ?>
 <script>
-    var subscription = 0;
-    // next_unit.addEventListener('click', hideUnit);
-    // if(subscription == 0){
-    const unitWrapper = document.getElementById('unit-wrap');
-    // const next_unit = document.getElementById('next_unit');
-    const units = document.querySelectorAll('.unit');
-    const unitsArray = Array.from(units);
-    document.getElementById('unit-wrap').classList.add('hide-unit');
-    for (let i = 0; i < units.length; i++) {
-        unitsArray[i].addEventListener('click', hideUnit);
+    function addLoad(){
+          document.getElementById('foy-add').innerHTML = `<iframe id="aswift_0" name="aswift_0" style="width:336px;height:280px;" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" width="336" height="280" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" src="https://googleads.g.doubleclick.net/pagead/ads?client=ca-pub-4877892089121284&amp;output=html&amp;h=280&amp;slotname=3317985609&amp;adk=491670548&amp;adf=479204335&amp;pi=t.ma~as.3317985609&amp;w=336&amp;lmt=1674213601&amp;format=336x280&amp;url=https%3A%2F%2Falison.com%2Ftopic%2Flearn%2F69364%2Flegal-ethical-issues-in-caregiving%23course-plan&amp;wgl=1&amp;uach=WyJXaW5kb3dzIiwiMTAuMC4wIiwieDg2IiwiIiwiMTA5LjAuNTQxNC43NSIsW10sZmFsc2UsbnVsbCwiNjQiLFtbIk5vdF9BIEJyYW5kIiwiOTkuMC4wLjAiXSxbIkdvb2dsZSBDaHJvbWUiLCIxMDkuMC41NDE0Ljc1Il0sWyJDaHJvbWl1bSIsIjEwOS4wLjU0MTQuNzUiXV0sZmFsc2Vd&amp;dt=1674213600868&amp;bpp=12&amp;bdt=1331&amp;idt=414&amp;shv=r20230118&amp;mjsv=m202212080101&amp;ptt=9&amp;saldr=aa&amp;abxe=1&amp;cookie=ID%3D15879ace970d3951-22fa538726d900de%3AT%3D1672639409%3ART%3D1672639409%3AS%3DALNI_MZxJvsm3OOXBTVPuGj85aUhYN7OBg&amp;gpic=UID%3D00000b9c68ad54f6%3AT%3D1672639409%3ART%3D1674212171%3AS%3DALNI_MYJWU_Pp5XfOjlczo9pBZJweYVCPg&amp;correlator=2905346017019&amp;frm=20&amp;pv=2&amp;ga_vid=1207935776.1672639231&amp;ga_sid=1674212048&amp;ga_hid=910468198&amp;ga_fc=1&amp;u_tz=360&amp;u_his=14&amp;u_h=1080&amp;u_w=1920&amp;u_ah=1040&amp;u_aw=1920&amp;u_cd=24&amp;u_sd=1&amp;dmc=8&amp;adx=784&amp;ady=181&amp;biw=1903&amp;bih=637&amp;scr_x=0&amp;scr_y=0&amp;eid=44759876%2C44759927%2C44759837&amp;oid=2&amp;pvsid=192414104749358&amp;tmod=337888573&amp;uas=0&amp;nvt=2&amp;eae=0&amp;fc=640&amp;brdim=1920%2C0%2C1920%2C0%2C1920%2C0%2C1920%2C1040%2C1920%2C637&amp;vis=1&amp;rsz=o%7Co%7CaeE%7C&amp;abl=NA&amp;pfx=0&amp;fu=0&amp;bc=31&amp;ifi=1&amp;uci=a!1&amp;fsb=1&amp;xpc=MdwTheixCU&amp;p=https%3A//alison.com&amp;dtd=547" data-google-container-id="a!1" data-google-query-id="CMjB_JKE1vwCFQ7IaAodZb0HDg" data-load-complete="true"></iframe>`;
     }
+    addLoad();
+    let subscription = 0;
+    if (subscription == 0) {
+        const unitWrapper = document.getElementById('unit-wrap');
+        const units = document.querySelectorAll('.unit');
+        const unitsArray = Array.from(units);
+        document.getElementById('unit-wrap').classList.add('hide-unit');
+        for (let i = 0; i < units.length; i++) {
+            unitsArray[i].addEventListener('click', hideUnit);
+        }
 
-    document.getElementById('hide-ad').addEventListener('click', showUnit);
+        document.getElementById('hide-ad').addEventListener('click', showUnit);
 
-    function hideUnit() {
-        jQuery(document).ajaxStop(function() {
+        function hideUnit() {
             clearInterval(timer);
             startTimer();
             document.getElementById('unit-wrap').classList.add('hide-unit');
             document.getElementById('ad-div').classList.remove('hide-unit');
-        });
-    }
+            // document.getElementById('foy_add_image').src = 'https://i.pravatar.cc/87';
+            document.getElementById('foy-add').innerHTML = `<iframe id="aswift_0" name="aswift_0" style="width:336px;height:280px;" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" width="336" height="280" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" src="https://googleads.g.doubleclick.net/pagead/ads?client=ca-pub-4877892089121284&amp;output=html&amp;h=280&amp;slotname=3317985609&amp;adk=491670548&amp;adf=479204335&amp;pi=t.ma~as.3317985609&amp;w=336&amp;lmt=1674213601&amp;format=336x280&amp;url=https%3A%2F%2Falison.com%2Ftopic%2Flearn%2F69364%2Flegal-ethical-issues-in-caregiving%23course-plan&amp;wgl=1&amp;uach=WyJXaW5kb3dzIiwiMTAuMC4wIiwieDg2IiwiIiwiMTA5LjAuNTQxNC43NSIsW10sZmFsc2UsbnVsbCwiNjQiLFtbIk5vdF9BIEJyYW5kIiwiOTkuMC4wLjAiXSxbIkdvb2dsZSBDaHJvbWUiLCIxMDkuMC41NDE0Ljc1Il0sWyJDaHJvbWl1bSIsIjEwOS4wLjU0MTQuNzUiXV0sZmFsc2Vd&amp;dt=1674213600868&amp;bpp=12&amp;bdt=1331&amp;idt=414&amp;shv=r20230118&amp;mjsv=m202212080101&amp;ptt=9&amp;saldr=aa&amp;abxe=1&amp;cookie=ID%3D15879ace970d3951-22fa538726d900de%3AT%3D1672639409%3ART%3D1672639409%3AS%3DALNI_MZxJvsm3OOXBTVPuGj85aUhYN7OBg&amp;gpic=UID%3D00000b9c68ad54f6%3AT%3D1672639409%3ART%3D1674212171%3AS%3DALNI_MYJWU_Pp5XfOjlczo9pBZJweYVCPg&amp;correlator=2905346017019&amp;frm=20&amp;pv=2&amp;ga_vid=1207935776.1672639231&amp;ga_sid=1674212048&amp;ga_hid=910468198&amp;ga_fc=1&amp;u_tz=360&amp;u_his=14&amp;u_h=1080&amp;u_w=1920&amp;u_ah=1040&amp;u_aw=1920&amp;u_cd=24&amp;u_sd=1&amp;dmc=8&amp;adx=784&amp;ady=181&amp;biw=1903&amp;bih=637&amp;scr_x=0&amp;scr_y=0&amp;eid=44759876%2C44759927%2C44759837&amp;oid=2&amp;pvsid=192414104749358&amp;tmod=337888573&amp;uas=0&amp;nvt=2&amp;eae=0&amp;fc=640&amp;brdim=1920%2C0%2C1920%2C0%2C1920%2C0%2C1920%2C1040%2C1920%2C637&amp;vis=1&amp;rsz=o%7Co%7CaeE%7C&amp;abl=NA&amp;pfx=0&amp;fu=0&amp;bc=31&amp;ifi=1&amp;uci=a!1&amp;fsb=1&amp;xpc=MdwTheixCU&amp;p=https%3A//alison.com&amp;dtd=547" data-google-container-id="a!1" data-google-query-id="CMjB_JKE1vwCFQ7IaAodZb0HDg" data-load-complete="true"></iframe>`;
 
-    function showUnit() {
-        document.getElementById('unit-wrap').classList.remove('hide-unit');
-        document.getElementById('ad-div').classList.add('hide-unit');
-    }
-    var timer;
-
-    function startTimer() {
-        // Disable the button
-        document.getElementById("hide-ad").disabled = true;
-
-        // Set the timer interval (in milliseconds)
-        var interval = 1000;
-
-        // Set the timer countdown (in seconds)
-        var countdown = 11;
-
-        // Set the timer label
-        var timerLabel = document.getElementById("timer-label");
-
-        // Initialize the timer
-        timer = setInterval(function() {
-            // Decrement the countdown
-            countdown--;
-
-            // Update the timer label
-            timerLabel.innerHTML = countdown + " seconds remaining";
-
-            // If the countdown reaches 0, stop the timer
-            if (countdown === 0) {
+            jQuery(document).ajaxStop(function() {
                 clearInterval(timer);
-                timerLabel.innerHTML = "";
-                // Enable the button
-                document.getElementById("hide-ad").disabled = false;
-            }
-        }, interval);
+                startTimer();
+                document.getElementById('unit-wrap').classList.add('hide-unit');
+                document.getElementById('ad-div').classList.remove('hide-unit');
+                document.getElementById('foy_add_image').src = 'https://i.pravatar.cc/87';
+            });
+        }
+
+        function showUnit() {
+            document.getElementById('unit-wrap').classList.remove('hide-unit');
+            document.getElementById('ad-div').classList.add('hide-unit');
+        }
+        var timer;
+
+        function startTimer() {
+            // Disable the button
+            document.getElementById("hide-ad").disabled = true;
+            // Set the timer interval (in milliseconds)
+            var interval = 1000;
+            // Set the timer countdown (in seconds)
+            var countdown = 11;
+            // Set the timer label
+            var timerLabel = document.getElementById("timer-label");
+            // Initialize the timer
+            timer = setInterval(function() {
+                // Decrement the countdown
+                countdown--;
+                // Update the timer label
+                timerLabel.innerHTML = countdown + " seconds remaining";
+                // If the countdown reaches 0, stop the timer
+                if (countdown === 0) {
+                    clearInterval(timer);
+                    timerLabel.innerHTML = "";
+                    // Enable the button
+                    document.getElementById("hide-ad").disabled = false;
+                }
+            }, interval);
+        }
+        startTimer();
     }
-    startTimer();
-    // }
 </script>
+<?php }?>
 
 <script>
     (function($) {

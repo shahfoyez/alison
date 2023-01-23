@@ -8,8 +8,7 @@
  * @version     2.0
  */
 
- if ( ! defined( 'ABSPATH' ) ) exit;
-
+if ( ! defined( 'ABSPATH' ) ) exit;
 class BP_Course_Action{
 
     public static $instance;
@@ -823,18 +822,22 @@ class BP_Course_Action{
                 color: #ffffff;
             }
         </style>
+        <?php //do_shortcode('[foy_add_section]') ?>
         <?php
-            $subscription = 0;
-            if($subscription == 0){?>
+            // $sub = get_user_subscription();
+            $sub = 0;
+        ?>
+        <?php
+        if ($sub == 0) { ?>
             <div class="foy_adv_section" id="ad-div">
                 <div class="foy-add-content">
-                    <!-- <img src="<?php// echo get_stylesheet_directory_uri(); ?>/assets/images/main_ads.png" alt=""> -->
-                    <img src="https://i.pravatar.cc/85" alt="" id="foy_add_image">
-                    <h1>Hi! I'm Arif.</h1>
-                </div>
-                <div>
-                    <button href="#" id="remove-ad">Remove Add</button>
-                    <button id="hide-ad">Start Topic</button>
+                    <div class="foy-add" id="foy-add">
+                        
+                    </div>
+                    <div class="foy-add-bottom">
+                        <button href="#" id="remove-ad">Remove Add</button>
+                        <button id="hide-ad">Start Topic</button>
+                    </div>
                 </div>
                 <span id="timer-label"></span>
             </div>

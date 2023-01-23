@@ -4,7 +4,7 @@
  *
  * Used on the checkout page, the checkout shortcode displays the checkout process.
  *
- * @package WooCommerce/Shortcodes/Checkout
+ * @package WooCommerce\Shortcodes\Checkout
  * @version 2.0.0
  */
 
@@ -84,9 +84,8 @@ class WC_Shortcode_Checkout {
 		// Pay for existing order.
 		if ( isset( $_GET['pay_for_order'], $_GET['key'] ) && $order_id ) { // WPCS: input var ok, CSRF ok.
 			try {
-				$order_key          = isset( $_GET['key'] ) ? wc_clean( wp_unslash( $_GET['key'] ) ) : ''; // WPCS: input var ok, CSRF ok.
-				$order              = wc_get_order( $order_id );
-				$hold_stock_minutes = (int) get_option( 'woocommerce_hold_stock_minutes', 0 );
+				$order_key = isset( $_GET['key'] ) ? wc_clean( wp_unslash( $_GET['key'] ) ) : ''; // WPCS: input var ok, CSRF ok.
+				$order     = wc_get_order( $order_id );
 
 				// Order or payment link is invalid.
 				if ( ! $order || $order->get_id() !== $order_id || ! hash_equals( $order->get_order_key(), $order_key ) ) {
@@ -139,31 +138,34 @@ class WC_Shortcode_Checkout {
 						}
 					}
 
-					foreach ( $order->get_items() as $item_key => $item ) {
-						if ( $item && is_callable( array( $item, 'get_product' ) ) ) {
-							$product = $item->get_product();
+					// Stock levels may already have been adjusted for this order (in which case we don't need to worry about checking for low stock).
+					if ( ! $order->get_data_store()->get_stock_reduced( $order->get_id() ) ) {
+						foreach ( $order->get_items() as $item_key => $item ) {
+							if ( $item && is_callable( array( $item, 'get_product' ) ) ) {
+								$product = $item->get_product();
 
-							if ( ! $product ) {
-								continue;
-							}
+								if ( ! $product ) {
+									continue;
+								}
 
-							if ( ! apply_filters( 'woocommerce_pay_order_product_in_stock', $product->is_in_stock(), $product, $order ) ) {
-								/* translators: %s: product name */
-								throw new Exception( sprintf( __( 'Sorry, "%s" is no longer in stock so this order cannot be paid for. We apologize for any inconvenience caused.', 'woocommerce' ), $product->get_name() ) );
-							}
+								if ( ! apply_filters( 'woocommerce_pay_order_product_in_stock', $product->is_in_stock(), $product, $order ) ) {
+									/* translators: %s: product name */
+									throw new Exception( sprintf( __( 'Sorry, "%s" is no longer in stock so this order cannot be paid for. We apologize for any inconvenience caused.', 'woocommerce' ), $product->get_name() ) );
+								}
 
-							// We only need to check products managing stock, with a limited stock qty.
-							if ( ! $product->managing_stock() || $product->backorders_allowed() ) {
-								continue;
-							}
+								// We only need to check products managing stock, with a limited stock qty.
+								if ( ! $product->managing_stock() || $product->backorders_allowed()  ) {
+									continue;
+								}
 
-							// Check stock based on all items in the cart and consider any held stock within pending orders.
-							$held_stock     = ( $hold_stock_minutes > 0 ) ? wc_get_held_stock_quantity( $product, $order->get_id() ) : 0;
-							$required_stock = $quantities[ $product->get_stock_managed_by_id() ];
+								// Check stock based on all items in the cart and consider any held stock within pending orders.
+								$held_stock     = wc_get_held_stock_quantity( $product, $order->get_id() );
+								$required_stock = $quantities[ $product->get_stock_managed_by_id() ];
 
-							if ( ! apply_filters( 'woocommerce_pay_order_product_has_enough_stock', ( $product->get_stock_quantity() >= ( $held_stock + $required_stock ) ), $product, $order ) ) {
-								/* translators: 1: product name 2: quantity in stock */
-								throw new Exception( sprintf( __( 'Sorry, we do not have enough "%1$s" in stock to fulfill your order (%2$s available). We apologize for any inconvenience caused.', 'woocommerce' ), $product->get_name(), wc_format_stock_quantity_for_display( $product->get_stock_quantity() - $held_stock, $product ) ) );
+								if ( ! apply_filters( 'woocommerce_pay_order_product_has_enough_stock', ( $product->get_stock_quantity() >= ( $held_stock + $required_stock ) ), $product, $order ) ) {
+									/* translators: 1: product name 2: quantity in stock */
+									throw new Exception( sprintf( __( 'Sorry, we do not have enough "%1$s" in stock to fulfill your order (%2$s available). We apologize for any inconvenience caused.', 'woocommerce' ), $product->get_name(), wc_format_stock_quantity_for_display( $product->get_stock_quantity() - $held_stock, $product ) ) );
+								}
 							}
 						}
 					}
@@ -184,12 +186,32 @@ class WC_Shortcode_Checkout {
 					current( $available_gateways )->set_current();
 				}
 
+				/**
+				 * Allows the text of the submit button on the Pay for Order page to be changed.
+				 *
+				 * @param string $text The text of the button.
+				 *
+				 * @since 3.0.2
+				 */
+				$order_button_text = apply_filters( 'woocommerce_pay_order_button_text', __( 'Pay for order', 'woocommerce' ) );
+
+				/**
+				 * Triggered right before the Pay for Order form, after validation of the order and customer.
+				 *
+				 * @param WC_Order $order              The order that is being paid for.
+				 * @param string   $order_button_text  The text for the submit button.
+				 * @param array    $available_gateways All available gateways.
+				 *
+				 * @since 6.6
+				 */
+				do_action( 'before_woocommerce_pay_form', $order, $order_button_text, $available_gateways );
+
 				wc_get_template(
 					'checkout/form-pay.php',
 					array(
 						'order'              => $order,
 						'available_gateways' => $available_gateways,
-						'order_button_text'  => apply_filters( 'woocommerce_pay_order_button_text', __( 'Pay for order', 'woocommerce' ) ),
+						'order_button_text'  => $order_button_text,
 					)
 				);
 

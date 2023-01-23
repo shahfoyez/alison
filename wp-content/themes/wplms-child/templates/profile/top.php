@@ -10,6 +10,21 @@
             $dataInsert = $for_you_obj->insert($_POST, $userId);
         }
     }
+    // $subscriptions = wcs_get_users_subscriptions( $userId );
+    // var_dump( $subscriptions );
+    // foreach ($subscriptions as $subscription){
+    // $status = $subscription->get_status();
+    //     if (in_array($status, array('pending-canceled', 'active', 'on-hold', 'pending','pending-cancel'))) {
+    //         //Check date
+    //         if (!empty($subscription->get_date( 'end' ))) {
+    //         $enroll_date =  $subscription->get_date( 'end' );
+    //         } elseif (!empty($subscription->get_date( 'next_payment' ))) {
+    //         $enroll_date =  $subscription->get_date( 'next_payment' );
+    //         }
+    //         $enroll_date;
+    //         $expiry = strtotime($enroll_date);
+    //     }
+    // }
 ?>
 <?php
     // reset for you form data
