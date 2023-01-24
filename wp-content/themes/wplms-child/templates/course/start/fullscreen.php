@@ -789,9 +789,6 @@ get_header('blank');
     </div>
 </div>
 
-
-
-
 <section id="content" class="unit_content_section">
     <div class="container-fluid">
         <div class="row">
