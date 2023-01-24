@@ -681,14 +681,6 @@ get_header('blank');
             <div class="col-md-3 unit_status_userbar">
                 <div class="course_percent">
                     <h3 class="unit_module_progress">Module Progress </h3>
-                    <?php
-                    // global $post;
-                    // $uid = 206;
-                    // $course_id = bp_course_get_unit_course_id($uid);
-                    // $user_id = get_current_user_id();
-                    // $progress = bp_course_get_user_progress($user_id, $course_id);
-                    // echo $progress . 'hello';
-                    ?>
                 </div>
                 <div class="unit_user_profile">
                     <div>
@@ -809,8 +801,9 @@ get_header('blank');
             <div class="col-md-6 col-sm-12 xcourse_content_panel">
                 <?php do_action('wplms_before_course_main_content'); ?>
                 <div class="course_content_panel_content">
+                    
                     <?php
-
+                    
                     if (have_posts()) : while (have_posts()) : the_post();
                             /**
                              * wplms_unit_content hook.
