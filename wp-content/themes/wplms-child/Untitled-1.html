@@ -1,0 +1,61 @@
+<style>
+    #btn2{
+        text-align: center;
+        margin:  0 auto;
+        display: block;
+        font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+border: 1px solid #FFFFFF;
+background: green;
+padding: 10px 20px;
+transition: .3s;
+    }
+    
+    #btn2:hover{
+        background-color: #FBB605;
+    }
+    
+    #coupon-alert2{
+        color: #fff;
+        font-weight: 500;
+        text-align: center;
+    }
+    
+</style>
+<p id="coupon-alert2"></p>
+<button id="btn2" onclick="myFunction2()">
+    Code: PRIME
+</button>
+
+
+<script>
+function myFunction2() {
+  // Copy the text inside the text field
+  navigator.clipboard.writeText("PRIME");
+  
+  document.getElementById("coupon-alert2").innerHTML = "Coupon Code Copied & applied.Just go to your cart and enjoy discount";
+  
+  setTimeout(()=>{
+      document.getElementById("coupon-alert2").innerHTML = "";
+  },3000)
+  
+    jQuery(document).ready(function($){
+    		$.ajax({
+    		url: ajaxurl,
+    		type: 'post',
+    		data: {
+    			'product_id': 522,
+    			'course_name': "Hello Course",
+    			'user': 'Shah Fayez',
+    			'email': 'example@gmail.com',
+    			'action': 'foy_add_certificate' 
+    		},
+    		success: function(data) {
+    			alert('Success!');
+    		}
+    	});
+    });
+}
+</script>

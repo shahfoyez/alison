@@ -751,22 +751,12 @@ get_header('blank');
 
                     <h2>
                         <?php
-
-
                         $username = get_user_meta($user_id);
 
                         $fname = $username['first_name'][0] ?? '';
                         $lname = $username['last_name'][0] ?? '';
                         $fullname =  ($fname != '' && $lname != '') ? $fname . ' ' . $lname : 'Set Your Name';
                         echo $fullname;
-
-
-                        // if ($username['first_name'][0] || $username['last_name'][0]) {
-                        //     echo $username['first_name'][0] . ' ' . $username['last_name'][0];
-                        // } else {
-                        //     echo 'User Name Empty';
-                        // }
-
                         ?>
                     </h2>
                     <a href="#">View Your Alison Profile</a>
