@@ -101,6 +101,152 @@ function add_section(){
 }
 add_shortcode( 'foy_add_section', 'add_section' );
 
+//ajax request to add product
+// function foy_add_certificate_action() {
+// 	// $product_id =  $_POST['product_id'];
+//     // $course_name = $_POST['course_name'];
+//     // $user = $_POST['user'];
+//     // $email = $_POST['email'];
+//     var_dump("jksdb");
+//     $product_id = 522;
+//     // $course_name = 'hello';
+//     // $user = 1;
+//     // $email = 'dasb@gmail.com';
+//     WC()->cart->add_to_cart( $product_id, 1 );
+// 	die();
+// }
+ 
+// add_action('wp_ajax_foy_add_certificate','foy_add_certificate_action');
+// add_action('wp_ajax_nopriv_foy_add_certificate','foy_add_certificate_action');
+
+function foy_add_certificate_action() {
+	// $product_id = 522;
+    $quantity = 1;
+    $variation_id = '';
+    $variation = array();
+    $product_id = $_POST['product_id'];
+    $custom_input_1 = $_POST['course_name'];
+    $custom_input_2 = $_POST['user'];
+    $custom_input_3 = $_POST['email'];
+    $passed_validation = apply_filters( 'woocommerce_add_to_cart_validation', true, $product_id, $quantity, $variation_id, $variation );
+    if ( $passed_validation ) {
+        do_action( 'woocommerce_before_add_to_cart', $product_id, $quantity, $variation_id, $variation );
+        $cart_item_key = WC()->cart->add_to_cart( $product_id, $quantity, $variation_id, $variation, array( 'custom_input_1' => $custom_input_1, 'custom_input_2' => $custom_input_2, 'custom_input_3' => $custom_input_3 ) );
+        do_action( 'woocommerce_after_add_to_cart', $cart_item_key, $product_id, $quantity, $variation_id, $variation );
+    }
+    wp_send_json_success();
+    wp_die();
+}
+ 
+add_action('wp_ajax_foy_add_certificate','foy_add_certificate_action');
+add_action('wp_ajax_nopriv_foy_add_certificate','foy_add_certificate_action');
+ 
+
+function custom_product_fields() {
+    global $product;
+    ?>
+    <div class="product-custom-fields">
+        <label for="field1" hidden>Course Name</label>
+        <input type="text" name="custom_input_1" id="field1" value="" hidden/>
+        <label for="field2" hidden>User</label>
+        <input type="text" name="custom_input_2" id="field2" value="" hidden/>
+        <label for="field3" hidden></label>Email</label>
+        <input type="text" name="custom_input_3" id="field3" value="" hidden/>
+    </div>
+    <?php
+}
+add_action( 'woocommerce_before_add_to_cart_button', 'custom_product_fields' );
+
+// display the custom input field values on the cart and checkout pages
+function display_custom_cart_item_data( $item_data, $cart_item ) {
+    // Check if the custom input field values are set
+    if( isset( $cart_item['custom_input_1'] ) ) {
+        // Display the custom input field values
+        $item_data[] = array(
+            'key' => 'Input 1',
+            'value' => $cart_item['custom_input_1']
+        );
+    }
+    if( isset( $cart_item['custom_input_2'] ) ) {
+        $item_data[] = array(
+            'key' => 'Input 2',
+            'value' => $cart_item['custom_input_2']
+        );
+    }
+    if( isset( $cart_item['custom_input_3'] ) ) {
+        $item_data[] = array(
+        'key' => 'Input 3',
+        'value' => $cart_item['custom_input_3']
+        );
+    }
+    return $item_data;
+}
+add_filter( 'woocommerce_get_item_data', 'display_custom_cart_item_data', 10, 2 );
+
+// saving the custom input fields value to order item meta
+function save_custom_order_item_meta( $item_id, $values ) {
+    if( isset( $values['custom_input_1'] ) ) {
+        wc_add_order_item_meta( $item_id, 'Input 1', $values['custom_input_1'] );
+    }
+    if( isset( $values['custom_input_2'] ) ) {
+        wc_add_order_item_meta( $item_id, 'Input 2', $values['custom_input_2'] );
+    }
+    if( isset( $values['custom_input_3'] ) ) {
+        wc_add_order_item_meta( $item_id, 'Input 3', $values['custom_input_3'] );
+    }
+}
+add_action( 'woocommerce_add_order_item_meta', 'save_custom_order_item_meta', 10, 2 );
+
+// function save_custom_fields_data( $cart_item_data, $product_id ) {
+//     if( isset( $_POST['field1'] ) ) {
+//         $cart_item_data[ 'field1' ] = $_POST['field1'];
+//     }
+//     if( isset( $_POST['field2'] ) ) {
+//         $cart_item_data[ 'field2' ] = $_POST['field2'];
+//     }
+//     if( isset( $_POST['field3'] ) ) {
+//         $cart_item_data[ 'field3' ] = $_POST['field3'];
+//     }
+//     return $cart_item_data;
+// }
+// add_filter( 'woocommerce_add_cart_item_data', 'save_custom_fields_data', 10, 2 );
+
+// function display_custom_fields_data( $item_data, $cart_item ) {
+//     if( !empty( $cart_item['field1'] ) ) {
+//         $item_data[] = array(
+//             'key'     => 'Field 1',
+//             'value'   => $cart_item['field1'],
+//         );
+//     }
+//     if( !empty( $cart_item['field2'] ) ) {
+//         $item_data[] = array(
+//             'key'     => 'Field 2',
+//             'value'   => $cart_item['field2'],
+//         );
+//     }
+//     if( !empty( $cart_item['field3'] ) ) {
+//         $item_data[] = array(
+//             'key'     => 'Field 3',
+//             'value'   => $cart_item['field3'],
+//         );
+//     }
+//     return $item_data;
+// }
+// add_filter( 'woocommerce_get_item_data', 'display_custom_fields_data', 10, 2 );
+
+// function save_custom_fields_data_backend( $item_id, $values, $cart_item_key ) {
+//     if( !empty( $values['field1'] ) ) {
+//         wc_add_order_item_meta( $item_id, 'field1', $values['field1'] );
+//     }
+//     if( !empty( $values['field2'] ) ) {
+//         wc_add_order_item_meta( $item_id, 'field2', $values['field2'] );
+//     }
+//     if( !empty( $values['field3'] ) ) {
+//         wc_add_order_item_meta( $item_id, 'field3', $values['field3'] );
+//     }
+// }
+// add_action( 'woocommerce_add_order_item_meta', 'save_custom_fields_data_backend', 10, 3 );
+
 
  
  
