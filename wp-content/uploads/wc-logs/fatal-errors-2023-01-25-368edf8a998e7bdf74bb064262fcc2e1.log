@@ -22,3 +22,31 @@ Stack trace:
 #19 {main}
   thrown in C:\xampp\htdocs\unit_customization_dashboard\wp-content\themes\wplms\includes\func.php on line 1475
 
+2023-01-25T10:24:04+00:00 CRITICAL syntax error, unexpected token ")" in C:\xampp\htdocs\unit_customization_dashboard\wp-content\themes\wplms-child\functions.php on line 147
+
+2023-01-25T10:30:35+00:00 CRITICAL Uncaught TypeError: in_array(): Argument #2 ($haystack) must be of type array, bool given in C:\xampp\htdocs\unit_customization_dashboard\wp-content\themes\wplms-child\functions.php:148
+Stack trace:
+#0 C:\xampp\htdocs\unit_customization_dashboard\wp-content\themes\wplms-child\functions.php(148): in_array(556, false)
+#1 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\class-wp-hook.php(308): custom_product_fields('')
+#2 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#3 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#4 C:\xampp\htdocs\unit_customization_dashboard\wp-content\plugins\woocommerce\templates\single-product\add-to-cart\simple.php(33): do_action('woocommerce_bef...')
+#5 C:\xampp\htdocs\unit_customization_dashboard\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include('C:\\xampp\\htdocs...')
+#6 C:\xampp\htdocs\unit_customization_dashboard\wp-content\plugins\woocommerce\includes\wc-template-functions.php(1697): wc_get_template('single-product/...')
+#7 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\class-wp-hook.php(308): woocommerce_simple_add_to_cart('')
+#8 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#9 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#10 C:\xampp\htdocs\unit_customization_dashboard\wp-content\plugins\woocommerce\includes\wc-template-functions.php(1688): do_action('woocommerce_sim...')
+#11 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\class-wp-hook.php(308): woocommerce_template_single_add_to_cart('')
+#12 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(NULL, Array)
+#13 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#14 C:\xampp\htdocs\unit_customization_dashboard\wp-content\themes\wplms\woocommerce\content-single-product.php(76): do_action('woocommerce_sin...')
+#15 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\template.php(785): require('C:\\xampp\\htdocs...')
+#16 C:\xampp\htdocs\unit_customization_dashboard\wp-content\plugins\woocommerce\includes\wc-core-functions.php(284): load_template('C:\\xampp\\htdocs...', false)
+#17 C:\xampp\htdocs\unit_customization_dashboard\wp-content\themes\wplms\woocommerce\single-product.php(42): wc_get_template_part('content', 'single-product')
+#18 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\template-loader.php(106): include('C:\\xampp\\htdocs...')
+#19 C:\xampp\htdocs\unit_customization_dashboard\wp-blog-header.php(19): require_once('C:\\xampp\\htdocs...')
+#20 C:\xampp\htdocs\unit_customization_dashboard\index.php(17): require('C:\\xampp\\htdocs...')
+#21 {main}
+  thrown in C:\xampp\htdocs\unit_customization_dashboard\wp-content\themes\wplms-child\functions.php on line 148
+

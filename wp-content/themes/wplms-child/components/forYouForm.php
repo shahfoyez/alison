@@ -53,6 +53,9 @@
                 $cat_array = array();
                 if (!is_wp_error($categories) && !empty($categories)) {
                     foreach ($categories as $category) {
+                        $thumbnail_id = get_term_meta( $category->term_id, 'course_cat_thumbnail_id', true );
+                        $image = wp_get_attachment_image_src( $thumbnail_id, 'full' );
+                        $image_src =  $image[0] ?? '';
                         $children = get_terms(array(
                             'taxonomy' => 'course-cat',
                             'parent' => $category->term_id,
@@ -65,9 +68,10 @@
                             $category_slug = $category->slug;
                             $cat_id = $category->term_id;
                             array_push($cat_array, $children);
-                ?>
+                ?>           
                             <input type="checkbox" name="course_cat[]" value="<?php echo $cat_id; ?>" id="<?php echo $cat_id; ?>">
                             <label for="<?php echo $cat_id; ?>" class="input-label">
+                                <img src="<?php echo $image_src ?>" style="height: 50px; width: 50px">
                                 <p class=course-cat-title><?php echo $category_name; ?></p>
                             </label>
                         <?php } ?>

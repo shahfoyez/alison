@@ -120,7 +120,6 @@ add_shortcode( 'foy_add_section', 'add_section' );
 // add_action('wp_ajax_nopriv_foy_add_certificate','foy_add_certificate_action');
 
 function foy_add_certificate_action() {
-	// $product_id = 522;
     $quantity = 1;
     $variation_id = '';
     $variation = array();
@@ -141,21 +140,22 @@ function foy_add_certificate_action() {
 add_action('wp_ajax_foy_add_certificate','foy_add_certificate_action');
 add_action('wp_ajax_nopriv_foy_add_certificate','foy_add_certificate_action');
  
-
-function custom_product_fields() {
+function foy_custom_product_fields() {
     global $product;
-    ?>
-    <div class="product-custom-fields">
-        <label for="field1" hidden>Course Name</label>
-        <input type="text" name="custom_input_1" id="field1" value="" hidden/>
-        <label for="field2" hidden>User</label>
-        <input type="text" name="custom_input_2" id="field2" value="" hidden/>
-        <label for="field3" hidden></label>Email</label>
-        <input type="text" name="custom_input_3" id="field3" value="" hidden/>
-    </div>
-    <?php
+    $allowed_products = array('522','533');
+     
+    if(in_array($product->id, $allowed_products)  ){ ?>
+        <div class="product-custom-fields">
+            <label for="field1">Course Name </label>
+            <input type="text" name="custom_input_1" id="field1" value="" hidden/>
+            <label for="field2" hidden>User</label>
+            <input type="text" name="custom_input_2" id="field2" value="" hidden/>
+            <label for="field3" hidden></label>Email</label>
+            <input type="text" name="custom_input_3" id="field3" value="" hidden/>
+        </div>
+    <?php }
 }
-add_action( 'woocommerce_before_add_to_cart_button', 'custom_product_fields' );
+add_action( 'woocommerce_before_add_to_cart_button', 'foy_custom_product_fields' );
 
 // display the custom input field values on the cart and checkout pages
 function display_custom_cart_item_data( $item_data, $cart_item ) {
