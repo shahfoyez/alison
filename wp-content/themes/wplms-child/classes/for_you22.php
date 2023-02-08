@@ -70,12 +70,14 @@ class ForYou {
         );
         $insert = $wpdb->insert($table_name, $insertData);
         // redirect to avoid resubmitting form data on refresh
-        if($insert){   
-            $msg = 1;
+        session_start();
+        if($insert){  
+            $_SESSION['recommendation'] = 1;
         }else{
-            $msg = 0;
+            $_SESSION['recommendation'] = 0;
         }
-        echo "<script>window.location = '?recommendation=".$msg."';</script>";
+        echo "<script>window.location = '';</script>";
+        // echo "<script>window.location = '?recommendation=".$msg."';</script>";
      }
      // get the recommended courses
      public function userRecommendedCourses($dataSubmitted) {
@@ -105,6 +107,7 @@ class ForYou {
             $curParent = '';
             $oldParent = '';
             $curPostId = '';
+            $oldPostId = '';
             
             foreach ( $courses as $course ) {
                 // get the parent name 
@@ -141,14 +144,16 @@ class ForYou {
             $userId
         );
         $result = $wpdb->query($query);
-
-        if($result === false) {
-            $msg= 2;
-        } elseif($result === 0) {
-            $msg= 0;
+        session_start();
+        if($result == false) {
+            $_SESSION['reset'] = 2;
+        } elseif($result == 0) {
+             $_SESSION['reset'] = 0;
         } else {
-            $msg= 1;
+            $_SESSION['reset'] = 1;
         }
-        echo "<script>window.location = '?reset=".$msg."';</script>";
+        echo "<script>window.location = '';</script>";
+
+
     }
 }

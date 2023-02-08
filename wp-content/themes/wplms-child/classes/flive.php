@@ -1,63 +1,68 @@
 <?php
-	$filepath= realpath(dirname(__FILE__));
-	include_once ($filepath.'/Format.php');
+$filepath = realpath(dirname(__FILE__));
+include_once($filepath . '/Format.php');
 ?>
 <?php
-class ForYou {
+class ForYou
+{
     private $fm;
-    public function __construct() {
-        $this->fm=new Format();
+    public function __construct()
+    {
+        $this->fm = new Format();
     }
-    public function getUserSubmit($userId) {
+    public function getUserSubmit($userId)
+    {
         global $wpdb;
         $table_name = 'wp_for_you';
-        $userId =$this->fm->validation($userId);
+        $userId = $this->fm->validation($userId);
         // check if user already submitted the data
-        $userSubmit = $wpdb->get_results($wpdb->prepare("
+        $userSubmit = $wpdb->get_results($wpdb->prepare(
+            "
             SELECT * 
             FROM wp_for_you
-            WHERE user_id = %d", 
+            WHERE user_id = %d",
             $userId
-        ) );
-       return $userSubmit;
+        ));
+        return $userSubmit;
     }
 
-    public function insert($data, $userId) {
+    public function insert($data, $userId)
+    {
         global $wpdb;
         $table_name = 'wp_for_you';
-        $userId =$this->fm->validation($userId);
+        $userId = $this->fm->validation($userId);
         
         // check if user already submitted the data
         $userSubmit = $this->getUserSubmit($userId);
 
-        if($userSubmit){
-            $msg="<span class='foy-error'>You form has already submitted.</span>";
-			return $msg;
+        if ($userSubmit) {
+            $msg = "<span class='foy-error'>You form has already submitted.</span>";
+            return $msg;
         }
         // main goal
-        $mainGoal =$this->fm->validation($data['main-goal']);
+        $mainGoal = $this->fm->validation($data['main-goal']);
         //course cats
         $courseCats = $data['course_cat'];
-        $courseCats = implode(',',$courseCats);
+        $courseCats = implode(',', $courseCats);
         // sub cats
         $subCategories = '';
         $subCatStr = '';
-        for($i=0; $i<3; $i++){
-            $subCats = $data['course-sub-cat-'.$i];
-            foreach($subCats as $subCat ){
-                $subCategories = implode(',',$subCats);
+        for ($i = 0; $i < 3; $i++) {
+            $subCats = $data['course-sub-cat-' . $i];
+            foreach ($subCats as $subCat) {
+                $subCategories = implode(',', $subCats);
             }
-            $subCatStr = $subCatStr.','.$subCategories;
+            $subCatStr = $subCatStr . ',' . $subCategories;
         }
         $subCatStr = ltrim($subCatStr, ",");
         // career cats
         $careerCats = $data['career-cat'];
-        $careerCats = implode(',',$careerCats);
+        $careerCats = implode(',', $careerCats);
         // career stage
-        $careerStage =$this->fm->validation($data['career-stage']);
-        if($mainGoal =="" || $courseCats =="" || $subCatStr =="" || $careerCats =="" || $careerStage =="" || $userId =="" ){
-            $msg="<span class='foy-error'>There is some error!</span>";
-			return $msg;
+        $careerStage = $this->fm->validation($data['career-stage']);
+        if ($mainGoal == "" || $courseCats == "" || $subCatStr == "" || $careerCats == "" || $careerStage == "" || $userId == "") {
+            $msg = "<span class='foy-error'>There is some error!</span>";
+            return $msg;
         }
         // Insert query
         $insertData = array(
@@ -69,16 +74,17 @@ class ForYou {
             'user_id' => $userId
         );
         $insert = $wpdb->insert($table_name, $insertData);
-        // redirect to avoid resubmitting form data on refresh
-        if($insert){   
-            $msg = 1;
-        }else{
-            $msg = 0;
+        if ($insert) {
+            $msg = "<span class='foy-success'>Successful! Your form has been submitted successfully</span>";
+            return $msg;
+        } else {
+            $msg = "<span class='foy-error'>There is some error!</span>";
+            return $msg;
         }
-        echo "<script>window.location = '?recommendation=".$msg."';</script>";
-     }
-     // get the recommended courses
-     public function userRecommendedCourses($dataSubmitted) {
+    }
+    // get the recommended courses
+    public function userRecommendedCourses($dataSubmitted)
+    {
         global $wpdb;
         $courseCats = $dataSubmitted->course_cats;
         // $cats = explode(",",$courseCats);
@@ -99,56 +105,64 @@ class ForYou {
                 ORDER BY tt.parent DESC
             ")
         );
-
+        // echo '<pre>';
+        // var_dump($courses);
+        // echo '</pre>';
         $catCourse = [];
-        if ( $courses ) {
+
+        if ($courses) {
             $curParent = '';
             $oldParent = '';
             $curPostId = '';
-            
-            foreach ( $courses as $course ) {
+            $oldPostId = '';
+
+            foreach ($courses as $course) {
                 // get the parent name 
-                $curParent = get_term( $course->parent, 'course-cat' )->name;
+                $curParent = get_term($course->parent, 'course-cat')->name;
                 $curPostId = $course->ID;
                 // check if the parent is different
-                if($curParent != $oldParent){
+                if ($curParent != $oldParent) {
                     // check if category key already exists
                     if (!array_key_exists($curParent, $catCourse)) {
                         // create an empty array with category as key
                         $catCourse[$curParent] = array();
-                    }  
-                    $oldParent = get_term( $course->parent, 'course-cat' )->name;
+                    }
+                    $oldParent = get_term($course->parent, 'course-cat')->name;
                 }
                 // check if current category already has same course
-                $filtered = array_filter($catCourse[$curParent], function($post) use($curPostId ){
+                $filtered = array_filter($catCourse[$curParent], function ($post) use ($curPostId) {
                     return $post->ID == $curPostId;
                 });
-                if(!count($filtered)>0){
+                if (!count($filtered) > 0) {
                     array_push($catCourse[$curParent], $course);
-                } 
+                }
             }
             return $catCourse;
         } else {
             return $catCourse;
         }
     }
-    public function resetForm($userId){
+    public function resetForm($userId)
+    {
         global $wpdb;
-        $query = $wpdb->prepare( "
+        $query = $wpdb->prepare(
+            "
             DELETE 
             FROM wp_for_you 
-            WHERE user_id = %d", 
+            WHERE user_id = %d",
             $userId
         );
         $result = $wpdb->query($query);
 
-        if($result === false) {
-            $msg= 2;
-        } elseif($result === 0) {
-            $msg= 0;
+        if ($result === false) {
+            $msg = "<span class='foy-error'>Error deleting your record!</span>";
+            return $msg;
+        } elseif ($result === 0) {
+            $msg = "<span class='foy-error'>No record found found!</span>";
+            return $msg;
         } else {
-            $msg= 1;
+            $msg = "<span class='foy-success'>Record deleted successfully!</span>";
+            return $msg;
         }
-        echo "<script>window.location = '?reset=".$msg."';</script>";
     }
 }

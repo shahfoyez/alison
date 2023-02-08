@@ -105,6 +105,7 @@ class ForYou {
             $curParent = '';
             $oldParent = '';
             $curPostId = '';
+            $oldPostId = '';
             
             foreach ( $courses as $course ) {
                 // get the parent name 
@@ -150,5 +151,7 @@ class ForYou {
             $msg= 1;
         }
         echo "<script>window.location = '?reset=".$msg."';</script>";
+
+
     }
 }

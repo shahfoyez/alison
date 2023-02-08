@@ -8,20 +8,29 @@
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (isset($_POST['for_you_submit'])) {
             $dataInsert = $for_you_obj->insert($_POST, $userId);
-            session_start();
-            $_SESSION['recommendation'] = $_GET['recommendation'];
-            var_dump( $_SESSION['recommendation']);
         }
     }
+    // $subscriptions = wcs_get_users_subscriptions( $userId );
+    // var_dump( $subscriptions );
+    // foreach ($subscriptions as $subscription){
+    // $status = $subscription->get_status();
+    //     if (in_array($status, array('pending-canceled', 'active', 'on-hold', 'pending','pending-cancel'))) {
+    //         //Check date
+    //         if (!empty($subscription->get_date( 'end' ))) {
+    //         $enroll_date =  $subscription->get_date( 'end' );
+    //         } elseif (!empty($subscription->get_date( 'next_payment' ))) {
+    //         $enroll_date =  $subscription->get_date( 'next_payment' );
+    //         }
+    //         $enroll_date;
+    //         $expiry = strtotime($enroll_date);
+    //     }
+    // }
 ?>
 <?php
     // reset for you form data
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         if(isset($_POST['foy-reset'])){
-            $resetForm = $for_you_obj->resetForm($userId); 
-            session_start();
-            $_SESSION['reset'] = $_GET['reset'];
-            var_dump( $_SESSION['reset']);
+            $resetForm = $for_you_obj->resetForm($userId);  
         }
     }
 ?>
@@ -553,25 +562,16 @@ if (in_array('student', (array) $user->roles)) {
                     </div>
                     <div class="container">
                         <?php
-                        session_start();
-                        var_dump( $_SESSION['recommendation'] ?? "recommendation");
-                        var_dump( $_SESSION['reset'] ?? "reset");
-                        
-                        if (isset($_SESSION['recommendation'])) {
-                            $recommendation = $_SESSION['Inside'];
-                            var_dump( $_SESSION['recommendation']?? "kjsgduifgdfg");
+                        if (isset($_GET['recommendation'])) {
+                            $recommendation =$_GET['recommendation'];
                             if($recommendation == 0){
                                 echo "<span class='foy-error'>There is some error!</span>";
                             }elseif($recommendation == 1){
                                 echo "<span class='foy-success'>Successful! Your form has been submitted successfully</span>";
                             }
-                            // unset($_SESSION['msg']);
                         }
-                        
-                        if (isset($_SESSION['reset'])) {
-                            var_dump( $_SESSION['reset'] ?? "Inside");
-
-                            $reset = $_SESSION['reset'];
+                        if (isset($_GET['reset'])) {
+                            $reset = $_GET['reset'];
                             if($reset == 0){
                                 echo "<span class='foy-error'>No record found found!</span>";
                             }elseif($reset == 1){
@@ -581,6 +581,7 @@ if (in_array('student', (array) $user->roles)) {
                             }
                         }
                         ?>
+                        
                     </div>
 
                     <div class="container">
