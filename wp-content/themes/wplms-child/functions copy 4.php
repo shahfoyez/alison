@@ -382,7 +382,7 @@ function foy_custom_product_fields() {
                 if(in_array($product->id, $bundle_5)){ ?>
                     <label for="field5">Course 05</label>
                     <div class="searchform foy-searchform">
-                        <input type="text" class="s" id="field5" name="custom_input_5" placeholder="Search courses..." value="" autocomplete="off" onkeyup="foyFunction5(this)">
+                        <input type="text" class="s" id="field5" name="custom_input_5" placeholder="Search courses..." value="" autocomplete="off" onkeyup="foyFunction6()">
                         <input type="text" class="s" id="course_id_5" name="course_id_5" placeholder="Id" value="" hidden>
 
                         <div id="foy-loading5" class="spinner-border" role="status">
@@ -441,39 +441,32 @@ function foy_custom_product_fields() {
                     // suggestionBox.classList.add("foy-hide");
                 }
             </script>
-            <!-- <script type="text/javascript">
-                function foyFunction6(element){
-                    var parent = element.parentElement;
-                    var loading = parent.children[2].id; 
-                    var suggestionBox = parent.children[3].id;
-                   
-                    
-
-                    jQuery('.'+suggestionBox).css( 'display', 'none' );
-                    jQuery('#'+loading).css( 'display', 'block' );
-                    var keyword = jQuery('#field5').val();
-                    if(keyword.length < 3){
-                        
-                        jQuery('#'+suggestionBox).html("");
-                        jQuery('#'+suggestionBox).css( 'display', 'none' );
-                        jQuery('#'+loading).css( 'display', 'none' );
-                    } else {
-                        jQuery.ajax({
-                            url: ajaxurl,
-                            type: 'get',
-                            data: { 
-                                action: 'data_fetch', 
-                                keyword: keyword  
-                            },
-                            success: function(data) { 
-                                jQuery('#'+suggestionBox).html( data );
-                                jQuery('#'+suggestionBox).css( 'display', 'block' );
-                                jQuery('#'+loading).css( 'display', 'none' );
-                            }         
-                        });
-                    }
-                }
-            </script> -->
+            <script type="text/javascript">
+                        function foyFunction5(){
+                            jQuery('.foy-suggestion-box').css( 'display', 'none' );
+                            jQuery('#foy-loading5').css( 'display', 'block' );
+                            var keyword = jQuery('#field5').val();
+                            if(keyword.length < 3){
+                                jQuery('#foy-suggestion-box5').html("");
+                                jQuery('#foy-suggestion-box5').css( 'display', 'none' );
+                                jQuery('#foy-loading5').css( 'display', 'none' );
+                            } else {
+                                jQuery.ajax({
+                                    url: ajaxurl,
+                                    type: 'get',
+                                    data: { 
+                                        action: 'data_fetch', 
+                                        keyword: keyword  
+                                    },
+                                    success: function(data) { 
+                                        jQuery('#foy-suggestion-box5').html( data );
+                                        jQuery('#foy-suggestion-box5').css( 'display', 'block' );
+                                        jQuery('#foy-loading5').css( 'display', 'none' );
+                                    }         
+                                });
+                            }
+                        }
+                    </script>
         </div>
     <?php }
 }
@@ -485,8 +478,10 @@ function foy_save_custom_fields_data( $cart_item_data, $product_id ) {
         $custom_input = "custom_input_$i";
         $course_id = "course_id_$i";
         if( isset( $_POST[$custom_input] ) ) {
-            $cart_item_data[$custom_input] = $_POST[$custom_input] ?? NULL;
-            $cart_item_data[$course_id] =  $_POST[$course_id] ?? NULL;
+            $cart_item_data[$custom_input] = $_POST[$custom_input];
+            $cart_item_data[$course_id] =  $_POST[$course_id];
+        }else{
+            break;
         }
     }
     return $cart_item_data;
@@ -502,8 +497,10 @@ function display_custom_cart_item_data($item_data, $cart_item)
         if (isset($cart_item[$custom_input])) {
             $item_data[] = array(
                 'key' => "Course $i",
-                'value' => $cart_item[$custom_input] ?? Null
+                'value' => $cart_item[$custom_input]
             );
+        }else{
+            break;
         }
     }
     return $item_data;
@@ -516,8 +513,10 @@ function save_custom_order_item_meta($item_id, $values)
         $custom_input = "custom_input_$i";
         $course_id = "course_id_$i";
         if (isset($values[$custom_input])) {
-            wc_add_order_item_meta($item_id, "Course_$i", $values[$custom_input] ?? NULL);
-            wc_add_order_item_meta($item_id, "id_$i", $values[$course_id] ?? NULL);
+            wc_add_order_item_meta($item_id, "Course_$i", $values[$custom_input] ?? '');
+            wc_add_order_item_meta($item_id, "id_$i", $values[$course_id] ?? '');
+        }else{
+            break;
         }
     }
 }
@@ -583,5 +582,4 @@ function data_fetch()
 }
 add_action('wp_ajax_data_fetch', 'data_fetch');
 add_action('wp_ajax_nopriv_data_fetch', 'data_fetch');
-
  

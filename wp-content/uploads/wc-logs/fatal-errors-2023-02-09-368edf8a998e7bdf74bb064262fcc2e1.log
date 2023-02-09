@@ -1,0 +1,8 @@
+2023-02-09T04:35:06+00:00 CRITICAL Cannot redeclare get_product_sections() (previously declared in C:\xampp\htdocs\unit_customization_dashboard\wp-content\themes\wplms-child\functions.php:592) in C:\xampp\htdocs\unit_customization_dashboard\wp-content\themes\wplms-child\functions.php on line 592
+
+2023-02-09T04:39:30+00:00 CRITICAL Cannot redeclare get_product_sections() (previously declared in C:\xampp\htdocs\unit_customization_dashboard\wp-content\themes\wplms-child\functions.php:592) in C:\xampp\htdocs\unit_customization_dashboard\wp-content\themes\wplms-child\functions.php on line 592
+
+2023-02-09T04:41:22+00:00 CRITICAL Cannot redeclare get_product_sections() (previously declared in C:\xampp\htdocs\unit_customization_dashboard\wp-content\themes\wplms-child\functions.php:592) in C:\xampp\htdocs\unit_customization_dashboard\wp-content\themes\wplms-child\functions.php on line 592
+
+2023-02-09T04:42:34+00:00 CRITICAL Cannot redeclare get_product_sections() (previously declared in C:\xampp\htdocs\unit_customization_dashboard\wp-content\themes\wplms-child\functions.php:592) in C:\xampp\htdocs\unit_customization_dashboard\wp-content\themes\wplms-child\functions.php on line 592
+
