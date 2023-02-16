@@ -1,0 +1,62 @@
+2023-02-16T03:34:23+00:00 CRITICAL syntax error, unexpected token "function" in C:\xampp\htdocs\unit_customization_dashboard\wp-content\themes\wplms-child\functions.php on line 606
+
+2023-02-16T03:36:04+00:00 CRITICAL syntax error, unexpected token "function" in C:\xampp\htdocs\unit_customization_dashboard\wp-content\themes\wplms-child\functions.php on line 606
+
+2023-02-16T03:38:05+00:00 CRITICAL syntax error, unexpected token "function" in C:\xampp\htdocs\unit_customization_dashboard\wp-content\themes\wplms-child\functions.php on line 606
+
+2023-02-16T03:40:06+00:00 CRITICAL syntax error, unexpected token "function" in C:\xampp\htdocs\unit_customization_dashboard\wp-content\themes\wplms-child\functions.php on line 606
+
+2023-02-16T04:05:30+00:00 CRITICAL syntax error, unexpected token "function" in C:\xampp\htdocs\unit_customization_dashboard\wp-content\themes\wplms-child\functions.php on line 606
+
+2023-02-16T04:06:06+00:00 CRITICAL syntax error, unexpected token "function" in C:\xampp\htdocs\unit_customization_dashboard\wp-content\themes\wplms-child\functions.php on line 606
+
+2023-02-16T04:07:28+00:00 CRITICAL syntax error, unexpected token "function" in C:\xampp\htdocs\unit_customization_dashboard\wp-content\themes\wplms-child\functions.php on line 606
+
+2023-02-16T04:08:07+00:00 CRITICAL syntax error, unexpected token "function" in C:\xampp\htdocs\unit_customization_dashboard\wp-content\themes\wplms-child\functions.php on line 606
+
+2023-02-16T04:09:29+00:00 CRITICAL syntax error, unexpected token "function" in C:\xampp\htdocs\unit_customization_dashboard\wp-content\themes\wplms-child\functions.php on line 606
+
+2023-02-16T04:10:08+00:00 CRITICAL syntax error, unexpected token "function" in C:\xampp\htdocs\unit_customization_dashboard\wp-content\themes\wplms-child\functions.php on line 606
+
+2023-02-16T04:30:15+00:00 CRITICAL syntax error, unexpected token "endwhile" in C:\xampp\htdocs\unit_customization_dashboard\wp-content\themes\wplms-child\functions.php on line 635
+
+2023-02-16T04:36:43+00:00 CRITICAL syntax error, unexpected token "," in C:\xampp\htdocs\unit_customization_dashboard\wp-content\themes\wplms-child\functions.php on line 618
+
+2023-02-16T04:42:41+00:00 CRITICAL syntax error, unexpected token "endwhile", expecting end of file in C:\xampp\htdocs\unit_customization_dashboard\wp-content\themes\wplms-child\functions.php on line 639
+
+2023-02-16T04:43:17+00:00 CRITICAL syntax error, unexpected token "endwhile", expecting end of file in C:\xampp\htdocs\unit_customization_dashboard\wp-content\themes\wplms-child\functions.php on line 639
+
+2023-02-16T04:43:17+00:00 CRITICAL syntax error, unexpected token "endwhile", expecting end of file in C:\xampp\htdocs\unit_customization_dashboard\wp-content\themes\wplms-child\functions.php on line 639
+
+2023-02-16T04:51:29+00:00 CRITICAL Uncaught Error: Call to a member function is_main_query() on null in C:\xampp\htdocs\unit_customization_dashboard\wp-content\themes\wplms-child\functions.php:621
+Stack trace:
+#0 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\shortcodes.php(355): foyez_ali('', '', 'foy_courses')
+#1 [internal function]: do_shortcode_tag(Array)
+#2 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\shortcodes.php(227): preg_replace_callback('/\\[(\\[?)(foy_co...', 'do_shortcode_ta...', '[foy_courses]')
+#3 C:\xampp\htdocs\unit_customization_dashboard\wp-content\plugins\elementor\includes\widgets\shortcode.php(130): do_shortcode('[foy_courses]')
+#4 C:\xampp\htdocs\unit_customization_dashboard\wp-content\plugins\elementor\includes\base\controls-stack.php(2266): Elementor\Widget_Shortcode->render()
+#5 C:\xampp\htdocs\unit_customization_dashboard\wp-content\plugins\elementor\includes\base\widget-base.php(609): Elementor\Controls_Stack->render_by_mode()
+#6 C:\xampp\htdocs\unit_customization_dashboard\wp-content\plugins\elementor\includes\base\widget-base.php(750): Elementor\Widget_Base->render_content()
+#7 C:\xampp\htdocs\unit_customization_dashboard\wp-content\plugins\elementor\includes\base\element-base.php(449): Elementor\Widget_Base->print_content()
+#8 C:\xampp\htdocs\unit_customization_dashboard\wp-content\plugins\elementor\includes\base\element-base.php(1348): Elementor\Element_Base->print_element()
+#9 C:\xampp\htdocs\unit_customization_dashboard\wp-content\plugins\elementor\includes\base\element-base.php(449): Elementor\Element_Base->print_content()
+#10 C:\xampp\htdocs\unit_customization_dashboard\wp-content\plugins\elementor\includes\base\element-base.php(1348): Elementor\Element_Base->print_element()
+#11 C:\xampp\htdocs\unit_customization_dashboard\wp-content\plugins\elementor\includes\base\element-base.php(449): Elementor\Element_Base->print_content()
+#12 C:\xampp\htdocs\unit_customization_dashboard\wp-content\plugins\elementor\core\base\document.php(1669): Elementor\Element_Base->print_element()
+#13 C:\xampp\htdocs\unit_customization_dashboard\wp-content\plugins\elementor\core\base\document.php(1095): Elementor\Core\Base\Document->print_elements(Array)
+#14 C:\xampp\htdocs\unit_customization_dashboard\wp-content\plugins\elementor\includes\frontend.php(1153): Elementor\Core\Base\Document->print_elements_with_wrapper(Array)
+#15 C:\xampp\htdocs\unit_customization_dashboard\wp-content\plugins\elementor\includes\frontend.php(1048): Elementor\Frontend->get_builder_content(693)
+#16 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\class-wp-hook.php(308): Elementor\Frontend->apply_builder_in_content('[foy_courses]')
+#17 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\plugin.php(205): WP_Hook->apply_filters('[foy_courses]', Array)
+#18 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\post-template.php(255): apply_filters('the_content', '[foy_courses]')
+#19 C:\xampp\htdocs\unit_customization_dashboard\wp-content\themes\wplms\notitle.php(12): the_content()
+#20 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\template-loader.php(106): include('C:\\xampp\\htdocs...')
+#21 C:\xampp\htdocs\unit_customization_dashboard\wp-blog-header.php(19): require_once('C:\\xampp\\htdocs...')
+#22 C:\xampp\htdocs\unit_customization_dashboard\index.php(17): require('C:\\xampp\\htdocs...')
+#23 {main}
+  thrown in C:\xampp\htdocs\unit_customization_dashboard\wp-content\themes\wplms-child\functions.php on line 621
+
+2023-02-16T04:58:31+00:00 CRITICAL Unmatched '}' in C:\xampp\htdocs\unit_customization_dashboard\wp-content\themes\wplms-child\functions.php on line 611
+
+2023-02-16T06:35:58+00:00 CRITICAL Unmatched '}' in C:\xampp\htdocs\unit_customization_dashboard\wp-content\themes\wplms-child\functions.php on line 633
+

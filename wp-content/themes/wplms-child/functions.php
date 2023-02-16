@@ -584,4 +584,87 @@ function data_fetch()
 add_action('wp_ajax_data_fetch', 'data_fetch');
 add_action('wp_ajax_nopriv_data_fetch', 'data_fetch');
 
+// function exclude_category_home( $query ) {
+//     // if ( $query->is_home ) {
+//     $query->set( 'course-cat', '-46, -9, -23' );
+//     $query->set( 'posts_per_page', 2 ); 
+
+//     // }
+//     return $query;
+// }
+// add_filter( 'pre_get_posts', 'exclude_category_home' );
+
+function get_page_id(){
+    global $post;
+    if(!$foy_mark){
+
+    }
+    $foy_mark = 0;
+    $page_id = $post->ID;
+    if($page_id == 0){
+        $foy_mark == 1;
+    }
+    return $foy_mark;
+}
+function exclude_courses_from_category($query) {
+    global $post;
+    $page_id = $post->ID;
+    // var_dump( $page_id);
+    var_dump(is_post_type_archive( 'course' ));
+    var_dump( is_page( 'all-courses' ) );
+    var_dump( is_page( 0 ) );
+    var_dump( is_admin() );
+
+    if( (!bp_is_my_profile() && !is_admin())    ){
+        $tax_query = array(
+            array(
+                'taxonomy' => 'course-cat',
+                'field'    => 'term_id',
+                'terms'    => array(46),
+                'operator' => 'NOT IN',
+            ),
+        );
+        $query->set('tax_query', $tax_query);
+    }
+}
+add_action('pre_get_posts', 'exclude_courses_from_category');
+ 
+ 
+
+function foyez_ali()
+{
+    var_dump(is_admin());
+   
+
+    $args = array(
+        'post_type' => 'course',
+        'post_status' => 'publish',
+        'order' => 'DESC',
+        'posts_per_page' => 10,
+    );
+    $the_query = new WP_Query($args);
+
+    if ($the_query->have_posts()) {
+		while ($the_query->have_posts()) : $the_query->the_post();
+			$meta = get_post_meta(get_the_ID());
+			$product_meta = get_post_meta(get_the_ID(), 'vibe_students', true);
+	?>
+			<div class="foy-course-list col-md-4" onclick="courseClicked(this)">
+				<?php
+                    $default =  get_theme_file_uri('/assets/images/defaultCourse.png');
+                    $image_url = get_the_post_thumbnail_url(get_the_ID(), 'thumbnail');
+                    $img_url = $image_url ? $image_url : $default;
+				?>
+				<img src="<?php echo $img_url; ?>" style="height: 200px; width: 200px;">
+				<p id="<?php echo get_the_ID()?>"><?php the_title(); ?></p>
+			</div>
+			<hr>
+	<?php endwhile;
+		wp_reset_postdata();
+	}else{
+        echo "no course data available";
+    }
+}
+add_shortcode('foy_courses', 'foyez_ali');
+ 
  
