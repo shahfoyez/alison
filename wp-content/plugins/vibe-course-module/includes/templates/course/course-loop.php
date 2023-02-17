@@ -16,7 +16,6 @@ isset($loop_number)?$loop_number:$loop_number=5;
 <?php do_action( 'bp_before_course_loop' ); ?>
 <?php 
 
-
 if ( bp_course_has_items( bp_ajax_querystring( 'course' ).'&orderby=menu_order&per_page='.$loop_number ) ) : ?>
 <?php // global $items_template; var_dump( $items_template ) ?>
 	<div id="pag-top" class="pagination">

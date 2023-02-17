@@ -117,7 +117,16 @@ class BP_COURSE {
 				'orderby'=> $orderby,
 				'posts_per_page' => $per_page,
 				'paged'		 => $paged,
+				'tax_query' => array(
+					array(
+						'taxonomy' => 'course-cat',
+						'field'    => 'term_id',
+						'terms'    => array(46),
+						'operator' => 'NOT IN',
+					),
+				)
 			);
+			 
 
 			if(!empty($post__in)){
 				$query_args['post__in'] = $post__in;
@@ -139,12 +148,24 @@ class BP_COURSE {
 			}else{
 				unset($query_args['meta_query']);
 			}
+			 
 
-			if(isset($tax_query) && is_array($tax_query)){
-				$query_args['tax_query']= $tax_query;
-			}else{
+			if(isset($tax_query) && is_array($tax_query) && count($tax_query) > 0){
 				unset($query_args['tax_query']);
+				$query_args['tax_query']= $tax_query;
 			}
+
+			// echo "<pre>";
+			// var_dump($query_args['tax_query']);
+			// var_dump($tax_query);
+
+			// echo "</pre>";
+			// if(isset($tax_query) && is_array($tax_query) ){
+			// 	$query_args['tax_query']= $tax_query;
+			// }
+			// else{
+			// 	unset($query_args['tax_query']);
+			// }
 
 			if(!empty($post_status)){
 				$query_args['post_status']=$post_status;

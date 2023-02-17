@@ -594,28 +594,27 @@ add_action('wp_ajax_nopriv_data_fetch', 'data_fetch');
 // }
 // add_filter( 'pre_get_posts', 'exclude_category_home' );
 
-function get_page_id(){
-    global $post;
-    if(!$foy_mark){
-
-    }
-    $foy_mark = 0;
-    $page_id = $post->ID;
-    if($page_id == 0){
-        $foy_mark == 1;
-    }
-    return $foy_mark;
-}
+ 
 function exclude_courses_from_category($query) {
     global $post;
     $page_id = $post->ID;
-    // var_dump( $page_id);
-    var_dump(is_post_type_archive( 'course' ));
-    var_dump( is_page( 'all-courses' ) );
-    var_dump( is_page( 0 ) );
-    var_dump( is_admin() );
+    // var_dump(is_post_type_archive( 'course' ));
+    // var_dump( is_page( 'all-courses' ) );
+    // var_dump( is_page( 0 ) );
+    // var_dump( $page_id  );
+    var_dump( bp_is_my_profile() );
+    var_dump( strpos( $_SERVER['REQUEST_URI'], '/wp-admin/' ) );
 
-    if( (!bp_is_my_profile() && !is_admin())    ){
+    $current_url = $_SERVER['REQUEST_URI'];
+$path = parse_url( $current_url, PHP_URL_PATH );
+
+ 
+    var_dump( strpos( $path, '/wp-admin/' ) );
+
+
+
+
+    if( !bp_is_my_profile() && !is_admin() ){
         $tax_query = array(
             array(
                 'taxonomy' => 'course-cat',

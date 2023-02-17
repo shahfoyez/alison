@@ -1,0 +1,83 @@
+2023-02-17T04:04:41+00:00 CRITICAL Unclosed '{' on line 609 in C:\xampp\htdocs\unit_customization_dashboard\wp-content\themes\wplms-child\functions.php on line 672
+
+2023-02-17T06:40:42+00:00 CRITICAL Out of memory (allocated 88080384) (tried to allocate 32768 bytes) in C:\xampp\htdocs\unit_customization_dashboard\wp-content\plugins\woocommerce\src\Admin\Features\OnboardingTasks\Task.php on line 501
+
+2023-02-17T09:07:23+00:00 CRITICAL Uncaught TypeError: count(): Argument #1 ($value) must be of type Countable|array, string given in C:\xampp\htdocs\unit_customization_dashboard\wp-content\plugins\vibe-course-module\includes\bp-course-actions.php:1495
+Stack trace:
+#0 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\class-wp-hook.php(310): BP_Course_Action->bp_course_enable_access(714)
+#1 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(NULL, Array)
+#2 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#3 C:\xampp\htdocs\unit_customization_dashboard\wp-content\plugins\woocommerce\includes\class-wc-order.php(387): do_action('woocommerce_ord...', 714, Object(Automattic\WooCommerce\Admin\Overrides\Order))
+#4 C:\xampp\htdocs\unit_customization_dashboard\wp-content\plugins\woocommerce\includes\class-wc-order.php(245): WC_Order->status_transition()
+#5 C:\xampp\htdocs\unit_customization_dashboard\wp-content\plugins\woocommerce\includes\class-wc-order.php(143): WC_Order->save()
+#6 C:\xampp\htdocs\unit_customization_dashboard\wp-content\plugins\woocommerce\includes\class-wc-checkout.php(1076): WC_Order->payment_complete()
+#7 C:\xampp\htdocs\unit_customization_dashboard\wp-content\plugins\woocommerce\includes\class-wc-checkout.php(1281): WC_Checkout->process_order_without_payment(714)
+#8 C:\xampp\htdocs\unit_customization_dashboard\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(481): WC_Checkout->process_checkout()
+#9 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\class-wp-hook.php(308): WC_AJAX::checkout('')
+#10 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#11 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#12 C:\xampp\htdocs\unit_customization_dashboard\wp-content\plugins\woocommerce\includes\class-wc-ajax.php(94): do_action('wc_ajax_checkou...')
+#13 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\class-wp-hook.php(308): WC_AJAX::do_wc_ajax('')
+#14 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(false, Array)
+#15 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#16 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\template-loader.php(13): do_action('template_redire...')
+#17 C:\xampp\htdocs\unit_customization_dashboard\wp-blog-header.php(19): require_once('C:\\xampp\\htdocs...')
+#18 C:\xampp\htdocs\unit_customization_dashboard\index.php(17): require('C:\\xampp\\htdocs...')
+#19 {main}
+  thrown in C:\xampp\htdocs\unit_customization_dashboard\wp-content\plugins\vibe-course-module\includes\bp-course-actions.php on line 1495
+
+2023-02-17T09:31:00+00:00 CRITICAL Unclosed '{' on line 598 in C:\xampp\htdocs\unit_customization_dashboard\wp-content\themes\wplms-child\functions.php on line 670
+
+2023-02-17T09:53:07+00:00 CRITICAL Uncaught Error: Call to undefined function bp_course_get_total_course_count_for_user() in C:\xampp\htdocs\unit_customization_dashboard\wp-content\plugins\vibe-course-module\includes\bp-course-loader.php:296
+Stack trace:
+#0 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\class-wp-hook.php(308): BP_Course_Component->setup_nav('')
+#1 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(NULL, Array)
+#2 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#3 C:\xampp\htdocs\unit_customization_dashboard\wp-content\plugins\buddypress\bp-core\bp-core-dependency.php(140): do_action('bp_setup_nav')
+#4 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\class-wp-hook.php(308): bp_setup_nav('')
+#5 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(NULL, Array)
+#6 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#7 C:\xampp\htdocs\unit_customization_dashboard\wp-content\plugins\buddypress\bp-core\bp-core-dependency.php(252): do_action('bp_init')
+#8 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\class-wp-hook.php(308): bp_init('')
+#9 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(NULL, Array)
+#10 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#11 C:\xampp\htdocs\unit_customization_dashboard\wp-settings.php(617): do_action('init')
+#12 C:\xampp\htdocs\unit_customization_dashboard\wp-config.php(100): require_once('C:\\xampp\\htdocs...')
+#13 C:\xampp\htdocs\unit_customization_dashboard\wp-load.php(50): require_once('C:\\xampp\\htdocs...')
+#14 C:\xampp\htdocs\unit_customization_dashboard\wp-blog-header.php(13): require_once('C:\\xampp\\htdocs...')
+#15 C:\xampp\htdocs\unit_customization_dashboard\index.php(17): require('C:\\xampp\\htdocs...')
+#16 {main}
+  thrown in C:\xampp\htdocs\unit_customization_dashboard\wp-content\plugins\vibe-course-module\includes\bp-course-loader.php on line 296
+
+2023-02-17T09:56:47+00:00 CRITICAL Uncaught Error: Class "BP_COURSE" not found in C:\xampp\htdocs\unit_customization_dashboard\wp-content\plugins\vibe-course-module\includes\bp-course-template.php:713
+Stack trace:
+#0 C:\xampp\htdocs\unit_customization_dashboard\wp-content\themes\wplms\course\course-loop.php(15): bp_course_has_items('&per_page=5&pri...')
+#1 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\template.php(783): require_once('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\template.php(718): load_template('C:\\xampp\\htdocs...', true, Array)
+#3 C:\xampp\htdocs\unit_customization_dashboard\wp-content\themes\wplms\templates\directory\course\index.php(107): locate_template(Array, true)
+#4 C:\xampp\htdocs\unit_customization_dashboard\wp-content\themes\wplms\includes\init.php(1026): include_once('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\unit_customization_dashboard\wp-content\themes\wplms-child\course\index.php(19): vibe_include_template('directory/cours...')
+#6 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\template.php(783): require_once('C:\\xampp\\htdocs...')
+#7 C:\xampp\htdocs\unit_customization_dashboard\wp-content\plugins\buddypress\bp-core\bp-core-catchuri.php(493): load_template('C:\\xampp\\htdocs...')
+#8 C:\xampp\htdocs\unit_customization_dashboard\wp-content\plugins\vibe-course-module\includes\bp-course-screens.php(29): bp_core_load_template('course/index')
+#9 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\class-wp-hook.php(308): bp_course_directory_setup('')
+#10 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(NULL, Array)
+#11 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#12 C:\xampp\htdocs\unit_customization_dashboard\wp-content\plugins\buddypress\bp-core\bp-core-dependency.php(359): do_action('bp_screens')
+#13 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\class-wp-hook.php(308): bp_screens('')
+#14 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(NULL, Array)
+#15 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#16 C:\xampp\htdocs\unit_customization_dashboard\wp-content\plugins\buddypress\bp-core\bp-core-dependency.php(416): do_action('bp_template_red...')
+#17 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\class-wp-hook.php(308): bp_template_redirect('')
+#18 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(NULL, Array)
+#19 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#20 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\template-loader.php(13): do_action('template_redire...')
+#21 C:\xampp\htdocs\unit_customization_dashboard\wp-blog-header.php(19): require_once('C:\\xampp\\htdocs...')
+#22 C:\xampp\htdocs\unit_customization_dashboard\index.php(17): require('C:\\xampp\\htdocs...')
+#23 {main}
+  thrown in C:\xampp\htdocs\unit_customization_dashboard\wp-content\plugins\vibe-course-module\includes\bp-course-template.php on line 713
+
+2023-02-17T09:59:07+00:00 CRITICAL syntax error, unexpected token ";", expecting ")" in C:\xampp\htdocs\unit_customization_dashboard\wp-content\plugins\vibe-course-module\includes\bp-course-classes.php on line 105
+
+2023-02-17T09:59:16+00:00 CRITICAL syntax error, unexpected token ";", expecting ")" in C:\xampp\htdocs\unit_customization_dashboard\wp-content\plugins\vibe-course-module\includes\bp-course-classes.php on line 105
+

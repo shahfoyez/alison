@@ -774,6 +774,7 @@ function bp_course_the_item() {
 if(!function_exists('bp_course_item_view')){
    function bp_course_item_view(){
    		global $post;
+
    		$filter = apply_filters('bp_course_single_item_view',0,$post);
    		if($filter){
    			return;
