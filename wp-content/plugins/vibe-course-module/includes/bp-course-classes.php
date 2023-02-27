@@ -89,13 +89,13 @@ class BP_COURSE {
 		// Only run the query once
 		if ( empty( $this->query ) ) {
 			$defaults = array(
-			'id'		=> 0,
-			'per_page'	=> 5,
-			'paged'		=> 1,
-			'order'		=> 'DESC',
-			'orderby'	=> 'menu_order',
-			'meta_key'  => '',
-			'tax_query' => ''
+				'id'		=> 0,
+				'per_page'	=> 5,
+				'paged'		=> 1,
+				'order'		=> 'DESC',
+				'orderby'	=> 'menu_order',
+				'meta_key'  => '',
+				'tax_query' => ''
 			);
 
 			$r = wp_parse_args( $args, $defaults );
@@ -148,16 +148,27 @@ class BP_COURSE {
 			}else{
 				unset($query_args['meta_query']);
 			}
-			 
+
+			echo "<pre>";
+			var_dump($query_args['tax_query']);
+			var_dump($tax_query);
+			echo "</pre>";
+
+			// if(isset($tax_query) && is_array($tax_query)){
+			// 	$query_args['tax_query']= $tax_query;
+			// }else{
+			// 	unset($query_args['tax_query']);
+			// }
 
 			if(isset($tax_query) && is_array($tax_query) && count($tax_query) > 0){
 				unset($query_args['tax_query']);
 				$query_args['tax_query']= $tax_query;
 			}
 
-			// echo "<pre>";
-			// var_dump($query_args['tax_query']);
-			// var_dump($tax_query);
+			echo "<pre>";
+			var_dump($query_args['tax_query']);
+			var_dump($tax_query);
+			echo "</pre>";
 
 			// echo "</pre>";
 			// if(isset($tax_query) && is_array($tax_query) ){
