@@ -604,7 +604,7 @@ function exclude_courses_from_category($query) {
                 'terms'    => array(46),
                 'operator' => 'NOT IN',
             ),
-        );f
+        );
         $query->set('tax_query', $tax_query);
     }
 }
