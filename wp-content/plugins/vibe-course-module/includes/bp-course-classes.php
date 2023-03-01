@@ -149,10 +149,10 @@ class BP_COURSE {
 				unset($query_args['meta_query']);
 			}
 
-			echo "<pre>";
-			var_dump($query_args['tax_query']);
-			var_dump($tax_query);
-			echo "</pre>";
+			// echo "<pre>";
+			// var_dump($query_args['tax_query']);
+			// var_dump($tax_query);
+			// echo "</pre>";
 
 			// if(isset($tax_query) && is_array($tax_query)){
 			// 	$query_args['tax_query']= $tax_query;
@@ -160,15 +160,15 @@ class BP_COURSE {
 			// 	unset($query_args['tax_query']);
 			// }
 
-			// if(isset($tax_query) && is_array($tax_query) && count($tax_query) > 0){
-			// 	unset($query_args['tax_query']);
-			// 	$query_args['tax_query']= $tax_query;
-			// }
+			if(isset($tax_query) && is_array($tax_query) && count($tax_query) > 0){
+				unset($query_args['tax_query']);
+				$query_args['tax_query']= $tax_query;
+			}
 
-			echo "<pre>";
-			var_dump($query_args['tax_query']);
-			var_dump($tax_query);
-			echo "</pre>";
+			// echo "<pre>";
+			// var_dump($query_args['tax_query']);
+			// var_dump($tax_query);
+			// echo "</pre>";
 
 			// echo "</pre>";
 			// if(isset($tax_query) && is_array($tax_query) ){

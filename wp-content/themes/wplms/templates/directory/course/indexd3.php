@@ -4,6 +4,9 @@ $id= vibe_get_bp_page_id('course');
 
 
 ?>
+<?php 
+	echo do_shortcode('[elementor-template id="727"]'); 
+?>
 <section id="title">
 	<?php do_action('wplms_before_title'); ?>
     <div class="<?php echo vibe_get_container(); ?>">
