@@ -1,0 +1,32 @@
+2023-03-02T16:12:17+00:00 CRITICAL Uncaught TypeError: call_user_func_array(): Argument #1 ($callback) must be a valid callback, function "foy_data_fetch" not found or invalid function name in C:\xampp\htdocs\unit_customization_dashboard\wp-includes\class-wp-hook.php:308
+Stack trace:
+#0 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#1 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#2 C:\xampp\htdocs\unit_customization_dashboard\wp-admin\admin-ajax.php(188): do_action('wp_ajax_foy_dat...')
+#3 {main}
+  thrown in C:\xampp\htdocs\unit_customization_dashboard\wp-includes\class-wp-hook.php on line 308
+
+2023-03-02T16:12:18+00:00 CRITICAL Uncaught TypeError: call_user_func_array(): Argument #1 ($callback) must be a valid callback, function "foy_data_fetch" not found or invalid function name in C:\xampp\htdocs\unit_customization_dashboard\wp-includes\class-wp-hook.php:308
+Stack trace:
+#0 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#1 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#2 C:\xampp\htdocs\unit_customization_dashboard\wp-admin\admin-ajax.php(188): do_action('wp_ajax_foy_dat...')
+#3 {main}
+  thrown in C:\xampp\htdocs\unit_customization_dashboard\wp-includes\class-wp-hook.php on line 308
+
+2023-03-02T16:13:08+00:00 CRITICAL Uncaught TypeError: call_user_func_array(): Argument #1 ($callback) must be a valid callback, function "foy_data_fetch" not found or invalid function name in C:\xampp\htdocs\unit_customization_dashboard\wp-includes\class-wp-hook.php:308
+Stack trace:
+#0 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#1 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#2 C:\xampp\htdocs\unit_customization_dashboard\wp-admin\admin-ajax.php(188): do_action('wp_ajax_foy_dat...')
+#3 {main}
+  thrown in C:\xampp\htdocs\unit_customization_dashboard\wp-includes\class-wp-hook.php on line 308
+
+2023-03-02T16:13:08+00:00 CRITICAL Uncaught TypeError: call_user_func_array(): Argument #1 ($callback) must be a valid callback, function "foy_data_fetch" not found or invalid function name in C:\xampp\htdocs\unit_customization_dashboard\wp-includes\class-wp-hook.php:308
+Stack trace:
+#0 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#1 C:\xampp\htdocs\unit_customization_dashboard\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#2 C:\xampp\htdocs\unit_customization_dashboard\wp-admin\admin-ajax.php(188): do_action('wp_ajax_foy_dat...')
+#3 {main}
+  thrown in C:\xampp\htdocs\unit_customization_dashboard\wp-includes\class-wp-hook.php on line 308
+

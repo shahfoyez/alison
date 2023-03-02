@@ -151,7 +151,7 @@ add_action('wp_ajax_nopriv_foy_add_certificate','foy_add_certificate_action');
  
 function foy_custom_product_fields() {
     global $product;
-    $allowed_products = array('657','648','556');
+    $allowed_products = array('522','568','648', '657');
     if(in_array($product->id, $allowed_products)  ){ ?>
         <style>
             .foy-suggestion-box {
@@ -218,68 +218,68 @@ function foy_custom_product_fields() {
             }
         </style>
         <div class="product-custom-fields">
-            <!-- Common -->
-            <!-- Input 1 -->
             <label for="field1">Course 01 </label>
-                <div class="searchform foy-searchform">
-                    <input type="text" class="s" id="field1" name="custom_input_1" placeholder="Search courses..." value="" autocomplete="off" onkeyup="foyFunction6(this)">
-                    <input type="text" class="s" id="course_id_1" name="course_id_1" placeholder="Id" value="" hidden>
-                    <div id="foy-loading1" class="spinner-border" role="status">
-                        <img src="https://project12.wpengine.com/wp-content/uploads/2023/01/1494.gif">
-                    </div>
-                    <div class="foy-suggestion-box" id="foy-suggestion-box1">
-                        <!-- course suggestion -->
-                    </div>
+            <div class="searchform foy-searchform">
+                <input type="text" class="s" id="field1" name="custom_input_1" placeholder="Search courses..." value="" autocomplete="off" onkeyup="foyFunction6(this)">
+                <input type="text" class="s" id="course_id_1" name="course_id_1" placeholder="Id" value="" hidden>
+                <div id="foy-loading1" class="spinner-border" role="status">
+                    <img src="https://project12.wpengine.com/wp-content/uploads/2023/01/1494.gif">
                 </div>
-                
-                <!-- Input 2 -->
-                <label for="field2">Course 02</label>
-                <div class="searchform foy-searchform">
-                    <input type="text" class="s" id="field2" name="custom_input_2" placeholder="Search courses..." value="" autocomplete="off" onkeyup="foyFunction6(this)">
-                    <input type="text" class="s" id="course_id_2" name="course_id_2" placeholder="Id" value="" hidden>
-                    <div id="foy-loading2" class="spinner-border" role="status">
-                        <img src="https://project12.wpengine.com/wp-content/uploads/2023/01/1494.gif">
-                    </div>
-                    <div class="foy-suggestion-box" id="foy-suggestion-box2">
-                        <!-- course suggestion -->
-                    </div>
+                <div class="foy-suggestion-box" id="foy-suggestion-box1">
+                    <!-- course suggestion -->
                 </div>
-                
-                <!-- Input 3 -->
-                <label for="field3">Course 03</label>
-                <div class="searchform foy-searchform">
-                    <input type="text" class="s" id="field3" name="custom_input_3" placeholder="Search courses..." value="" autocomplete="off" onkeyup="foyFunction6(this)">
-                    <input type="text" class="s" id="course_id_3" name="course_id_3" placeholder="Id" value="" hidden>
+            </div>
+            
+            <!-- Input 2 -->
+            <label for="field2">Course 02</label>
+            <div class="searchform foy-searchform">
+                <input type="text" class="s" id="field2" name="custom_input_2" placeholder="Search courses..." value="" autocomplete="off" onkeyup="foyFunction6(this)">
+                <input type="text" class="s" id="course_id_2" name="course_id_2" placeholder="Id" value="" hidden>
+                <div id="foy-loading2" class="spinner-border" role="status">
+                    <img src="https://project12.wpengine.com/wp-content/uploads/2023/01/1494.gif">
+                </div>
+                <div class="foy-suggestion-box" id="foy-suggestion-box2">
+                    <!-- course suggestion -->
+                </div>
+            </div>
+             
+            <!-- Input 3 -->
+            <label for="field3">Course 03</label>
+            <div class="searchform foy-searchform">
+                <input type="text" class="s" id="field3" name="custom_input_3" placeholder="Search courses..." value="" autocomplete="off" onkeyup="foyFunction6(this)">
+                <input type="text" class="s" id="course_id_3" name="course_id_3" placeholder="Id" value="" hidden>
 
-                    <div id="foy-loading3" class="spinner-border" role="status">
-                        <img src="https://project12.wpengine.com/wp-content/uploads/2023/01/1494.gif">
-                    </div>
-                    <div class="foy-suggestion-box" id="foy-suggestion-box3">
-                        <!-- course suggestion -->
-                    </div>
+                <div id="foy-loading3" class="spinner-border" role="status">
+                    <img src="https://project12.wpengine.com/wp-content/uploads/2023/01/1494.gif">
                 </div>
-                <!-- Common Ends -->
+                <div class="foy-suggestion-box" id="foy-suggestion-box3">
+                    <!-- course suggestion -->
+                </div>
+            </div>
+             
+            <!-- Input 4 -->
             <?php 
-                $bundle_4 = array('648');;
+                $bundle_4 = array('657', '648');
                 if(in_array($product->id, $bundle_4)){ ?>
-                    <!-- Input 4 -->
-                    <label for="field4">Course 04</label>
-                    <div class="searchform foy-searchform">
-                        <input type="text" class="s" id="field4" name="custom_input_4" placeholder="Search courses..." value="" autocomplete="off" onkeyup="foyFunction6(this)">
-                        <input type="text" class="s" id="course_id_4" name="course_id_4" placeholder="Id" value="" hidden>
+                <label for="field4">Course 04</label>
+                <div class="searchform foy-searchform">
+                    <input type="text" class="s" id="field4" name="custom_input_4" placeholder="Search courses..." value="" autocomplete="off" onkeyup="foyFunction6(this)">
+                    <input type="text" class="s" id="course_id_4" name="course_id_4" placeholder="Id" value="" hidden>
 
-                        <div id="foy-loading4" class="spinner-border" role="status">
-                            <img src="https://project12.wpengine.com/wp-content/uploads/2023/01/1494.gif">
-                        </div>
-                        <div class="foy-suggestion-box" id="foy-suggestion-box4">
-                            <!-- course suggestion -->
-                        </div>
+                    <div id="foy-loading4" class="spinner-border" role="status">
+                        <img src="https://project12.wpengine.com/wp-content/uploads/2023/01/1494.gif">
                     </div>
+                    <div class="foy-suggestion-box" id="foy-suggestion-box4">
+                        <!-- course suggestion -->
+                    </div>
+                </div>
+                 
+
             <?php }?>
+            <!-- Input 5 -->
             <?php 
-                $bundle_5 = array('556');
+                $bundle_5 = array('648');
                 if(in_array($product->id, $bundle_5)){ ?>
-                    <!-- Input 5 -->
                     <label for="field5">Course 05</label>
                     <div class="searchform foy-searchform">
                         <input type="text" class="s" id="field5" name="custom_input_5" placeholder="Search courses..." value="" autocomplete="off" onkeyup="foyFunction6(this)">
@@ -308,24 +308,45 @@ function foy_custom_product_fields() {
 
                     jQuery('.foy-suggestion-box').css( 'display', 'none' );
                     secondInputField.value = courseId;
+                    console.log(secondInputField);
                 }
             </script>
-            
-            <script></script>
+            <script>
+                // jQuery(document).ready(function() {
+                // // jQuery('.s').on('keyup', function() {
+                //     console.log("jsdb");
+                //     var allFieldsFilled = true;
+                //     jQuery('.foy-searchform').each(function() {
+                //     var firstInputValue = jQuery(this).find('.s:first').val();
+                //     var secondInputValue = jQuery(this).find('.s:last').val();
+                //     if (firstInputValue === '' || secondInputValue === '') {
+                //         allFieldsFilled = false;
+                //         return false; // exit each loop
+                //     }
+                //     });
+                //     jQuery('.single_add_to_cart_button').prop('disabled', !allFieldsFilled);
+                // // });
+                // });
+            </script>
+            <script type="text/javascript">
+                tabElement = document.getElementById(elementor-tab-title)
                 function foyFunction6(element){
-                    let parent = element.parentElement;
-                    let loading = parent.children[2]; 
-                    let suggestionBox = parent.children[3];
-
-                    jQuery(suggestionBox).css( 'display', 'none' );
-                    jQuery(loading).css( 'display', 'block' );
-                    let keyword = jQuery(element).val();
-
+                    console.log(element);
+                    var parent = element.parentElement;
+                   
+                    var loading = parent.children[2].id; 
+                    var suggestionBox = parent.children[3].id;
+                   
+                    jQuery('.'+suggestionBox).css( 'display', 'none' );
+                    jQuery('#'+loading).css( 'display', 'block' );
+                    var keyword = jQuery(element).val();
+                    console.log(keyword);
                     if(keyword.length < 3){
-                        jQuery(suggestionBox).html("");
-                        jQuery(suggestionBox).css( 'display', 'none' );
-                        jQuery(loading).css( 'display', 'none' );
-                    }else {
+                        jQuery('#'+suggestionBox).html("");
+                        jQuery('#'+suggestionBox).css( 'display', 'none' );
+                        jQuery('#'+loading).css( 'display', 'none' );
+                    } else {
+                        console.log('hello');
                         jQuery.ajax({
                             url: ajaxurl,
                             type: 'get',
@@ -334,14 +355,144 @@ function foy_custom_product_fields() {
                                 keyword: keyword  
                             },
                             success: function(data) { 
-                                jQuery(suggestionBox).html( data );
-                                jQuery(suggestionBox).css( 'display', 'block' );
-                                jQuery(loading).css( 'display', 'none' );
+                                jQuery('#'+suggestionBox).html( data );
+                                jQuery('#'+suggestionBox).css( 'display', 'block' );
+                                jQuery('#'+loading).css( 'display', 'none' );
                             }         
                         });
                     }
                 }
             </script>
+             <!-- <script type="text/javascript">
+                function foyFunction1(){
+                    jQuery('.foy-suggestion-box').css( 'display', 'none' );
+                    jQuery('#foy-loading1').css( 'display', 'block' );
+                    var keyword = jQuery('#field1').val();
+                    if(keyword.length < 3){
+                        jQuery('#foy-suggestion-box1').html("");
+                        jQuery('#foy-suggestion-box1').css( 'display', 'none' );
+                        jQuery('#foy-loading1').css( 'display', 'none' );
+                    } else {
+                        jQuery.ajax({
+                            url: ajaxurl,
+                            type: 'get',
+                            data: { 
+                                action: 'data_fetch', 
+                                keyword: keyword  
+                            },
+                            success: function(data) { 
+                                jQuery('#foy-suggestion-box1').html( data );
+                                jQuery('#foy-suggestion-box1').css( 'display', 'block' );
+                                jQuery('#foy-loading1').css( 'display', 'none' );
+                            }         
+                        });
+                    }
+                } 
+            </script> -->
+            <!-- <script type="text/javascript">
+                function foyFunction2(){
+                    jQuery('.foy-suggestion-box').css( 'display', 'none' );
+                    jQuery('#foy-loading2').css( 'display', 'block' );
+                    var keyword = jQuery('#field2').val();
+                    if(keyword.length < 3){
+                        jQuery('#foy-suggestion-box2').html("");
+                        jQuery('#foy-suggestion-box2').css( 'display', 'none' );
+                        jQuery('#foy-loading2').css( 'display', 'none' );
+                    } else {
+                        jQuery.ajax({
+                            url: ajaxurl,
+                            type: 'get',
+                            data: { 
+                                action: 'data_fetch', 
+                                keyword: keyword  
+                            },
+                            success: function(data) { 
+                                jQuery('#foy-suggestion-box2').html( data );
+                                jQuery('#foy-suggestion-box2').css( 'display', 'block' );
+                                jQuery('#foy-loading2').css( 'display', 'none' );
+                            }         
+                        });
+                    }
+                }
+            </script> -->
+            <!-- <script type="text/javascript">
+                function foyFunction3(){
+                    jQuery('.foy-suggestion-box').css( 'display', 'none' );
+                    jQuery('#foy-loading3').css( 'display', 'block' );
+                    var keyword = jQuery('#field3').val();
+                    if(keyword.length < 3){
+                        jQuery('#foy-suggestion-box3').html("");
+                        jQuery('#foy-suggestion-box3').css( 'display', 'none' );
+                        jQuery('#foy-loading3').css( 'display', 'none' );
+                    } else {
+                        jQuery.ajax({
+                            url: ajaxurl,
+                            type: 'get',
+                            data: { 
+                                action: 'data_fetch', 
+                                keyword: keyword  
+                            },
+                            success: function(data) { 
+                                jQuery('#foy-suggestion-box3').html( data );
+                                jQuery('#foy-suggestion-box3').css( 'display', 'block' );
+                                jQuery('#foy-loading3').css( 'display', 'none' );
+                            }         
+                        });
+                    }
+                }
+            </script> -->
+                <!-- <script type="text/javascript">
+                    function foyFunction4(){
+                        jQuery('.foy-suggestion-box').css( 'display', 'none' );
+                        jQuery('#foy-loading4').css( 'display', 'block' );
+                        var keyword = jQuery('#field4').val();
+                        if(keyword.length < 3){
+                            jQuery('#foy-suggestion-box4').html("");
+                            jQuery('#foy-suggestion-box4').css( 'display', 'none' );
+                            jQuery('#foy-loading4').css( 'display', 'none' );
+                        } else {
+                            jQuery.ajax({
+                                url: ajaxurl,
+                                type: 'get',
+                                data: { 
+                                    action: 'data_fetch', 
+                                    keyword: keyword  
+                                },
+                                success: function(data) { 
+                                    jQuery('#foy-suggestion-box4').html( data );
+                                    jQuery('#foy-suggestion-box4').css( 'display', 'block' );
+                                    jQuery('#foy-loading4').css( 'display', 'none' );
+                                }         
+                            });
+                        }
+                    }
+                </script> -->
+                    <!-- <script type="text/javascript">
+                        function foyFunction5(){
+                            jQuery('.foy-suggestion-box').css( 'display', 'none' );
+                            jQuery('#foy-loading5').css( 'display', 'block' );
+                            var keyword = jQuery('#field5').val();
+                            if(keyword.length < 3){
+                                jQuery('#foy-suggestion-box5').html("");
+                                jQuery('#foy-suggestion-box5').css( 'display', 'none' );
+                                jQuery('#foy-loading5').css( 'display', 'none' );
+                            } else {
+                                jQuery.ajax({
+                                    url: ajaxurl,
+                                    type: 'get',
+                                    data: { 
+                                        action: 'data_fetch', 
+                                        keyword: keyword  
+                                    },
+                                    success: function(data) { 
+                                        jQuery('#foy-suggestion-box5').html( data );
+                                        jQuery('#foy-suggestion-box5').css( 'display', 'block' );
+                                        jQuery('#foy-loading5').css( 'display', 'none' );
+                                    }         
+                                });
+                            }
+                        }
+                    </script> -->
         </div>
     <?php }
 }
