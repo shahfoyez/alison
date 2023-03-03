@@ -224,7 +224,7 @@ function foy_custom_product_fields() {
                 <div class="searchform foy-searchform">
                     <input type="text" class="s" id="field1" name="custom_input_1" placeholder="Search courses..." value="" autocomplete="off" onkeyup="foyFunction6(this)">
                     <input type="text" class="s" id="course_id_1" name="course_id_1" placeholder="Id" value="" hidden>
-                    <div id="foy-loading1" class="spinner-border" role="status">
+                    <div id="foy-loading" class="spinner-border" role="status">
                         <img src="https://project12.wpengine.com/wp-content/uploads/2023/01/1494.gif">
                     </div>
                     <div class="foy-suggestion-box" id="foy-suggestion-box1">
@@ -237,7 +237,7 @@ function foy_custom_product_fields() {
                 <div class="searchform foy-searchform">
                     <input type="text" class="s" id="field2" name="custom_input_2" placeholder="Search courses..." value="" autocomplete="off" onkeyup="foyFunction6(this)">
                     <input type="text" class="s" id="course_id_2" name="course_id_2" placeholder="Id" value="" hidden>
-                    <div id="foy-loading2" class="spinner-border" role="status">
+                    <div id="foy-loading" class="spinner-border" role="status">
                         <img src="https://project12.wpengine.com/wp-content/uploads/2023/01/1494.gif">
                     </div>
                     <div class="foy-suggestion-box" id="foy-suggestion-box2">
@@ -251,7 +251,7 @@ function foy_custom_product_fields() {
                     <input type="text" class="s" id="field3" name="custom_input_3" placeholder="Search courses..." value="" autocomplete="off" onkeyup="foyFunction6(this)">
                     <input type="text" class="s" id="course_id_3" name="course_id_3" placeholder="Id" value="" hidden>
 
-                    <div id="foy-loading3" class="spinner-border" role="status">
+                    <div id="foy-loading" class="spinner-border" role="status">
                         <img src="https://project12.wpengine.com/wp-content/uploads/2023/01/1494.gif">
                     </div>
                     <div class="foy-suggestion-box" id="foy-suggestion-box3">
@@ -268,7 +268,7 @@ function foy_custom_product_fields() {
                         <input type="text" class="s" id="field4" name="custom_input_4" placeholder="Search courses..." value="" autocomplete="off" onkeyup="foyFunction6(this)">
                         <input type="text" class="s" id="course_id_4" name="course_id_4" placeholder="Id" value="" hidden>
 
-                        <div id="foy-loading4" class="spinner-border" role="status">
+                        <div id="foy-loading" class="spinner-border" role="status">
                             <img src="https://project12.wpengine.com/wp-content/uploads/2023/01/1494.gif">
                         </div>
                         <div class="foy-suggestion-box" id="foy-suggestion-box4">
@@ -283,9 +283,9 @@ function foy_custom_product_fields() {
                     <label for="field5">Course 05</label>
                     <div class="searchform foy-searchform">
                         <input type="text" class="s" id="field5" name="custom_input_5" placeholder="Search courses..." value="" autocomplete="off" onkeyup="foyFunction6(this)">
-                        <input type="text" class="s" id="course_id_5" name="course_id_5" placeholder="Id" value="" hidden>
+                        <input type="text" id="course_id_5" name="course_id_5" placeholder="Id" value="" hidden>
 
-                        <div id="foy-loading5" class="spinner-border" role="status">
+                        <div id="foy-loading" class="spinner-border" role="status">
                             <img src="https://project12.wpengine.com/wp-content/uploads/2023/01/1494.gif">
                         </div>
                         <div class="foy-suggestion-box" id="foy-suggestion-box5">
@@ -295,23 +295,29 @@ function foy_custom_product_fields() {
             <?php }?>
 
             <script>
+                const inputs = document.querySelectorAll('.s');
+                console.log(inputs);
+                inputs.forEach(input => {
+                    input.addEventListener('click', () => {
+                        jQuery('.foy-suggestion-box').css( 'display', 'none' );
+                    });
+                });
                 function courseClicked(element){
+                    jQuery('.foy-suggestion-box').css( 'display', 'none' );
                     var courseText = element.lastElementChild.innerText;
                     var courseId = element.lastElementChild.id;
                     var grandParent = element.parentElement.parentElement;
                     var inputField = grandParent.firstElementChild;
                     var secondInputField = grandParent.children[1];
 
+                    // first input field
                     inputField.value = courseText;
-                    inputField.setAttribute("value", courseId);
-                    inputField.setAttribute("data-attribute", courseId);
-
-                    jQuery('.foy-suggestion-box').css( 'display', 'none' );
+                    //second input field (hidden field)
                     secondInputField.value = courseId;
                 }
             </script>
             
-            <script></script>
+            <script>
                 function foyFunction6(element){
                     let parent = element.parentElement;
                     let loading = parent.children[2]; 
@@ -515,5 +521,5 @@ function foyez_ali()
     }
 }
 add_shortcode('foy_courses', 'foyez_ali');
- 
+
  

@@ -1,10 +1,5 @@
-.elementor-727 .elementor-element.elementor-element-894380d:not(.elementor-motion-effects-element-type-background), .elementor-727 .elementor-element.elementor-element-894380d > .elementor-motion-effects-container > .elementor-motion-effects-layer{background-image:url("http://localhost/unit_customization_dashboard/wp-content/uploads/2023/03/Group-1-6-1.png");}.elementor-727 .elementor-element.elementor-element-894380d{transition:background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;}.elementor-727 .elementor-element.elementor-element-894380d > .elementor-background-overlay{transition:background 0.3s, border-radius 0.3s, opacity 0.3s;}.elementor-727 .elementor-element.elementor-element-a191ee3{text-align:center;}.elementor-727 .elementor-element.elementor-element-a191ee3 .elementor-heading-title{color:#27D07D;font-family:"Work Sans", Sans-serif;font-size:36px;font-weight:600;}.elementor-727 .elementor-element.elementor-element-631c342{text-align:center;}.elementor-727 .elementor-element.elementor-element-631c342 .elementor-heading-title{color:#FFFFFF;font-family:"Poppins", Sans-serif;font-size:20px;font-weight:500;}/* Start custom CSS for wp-widget-bp_course_search_widget, class: .elementor-element-ecc1926 */#searchform ul {
-    display: flex;
-    justify-content: center;
-    background: #ffffff;
-}
-form#searchform {
-    max-width: 530px;
+.elementor-727 .elementor-element.elementor-element-894380d:not(.elementor-motion-effects-element-type-background), .elementor-727 .elementor-element.elementor-element-894380d > .elementor-motion-effects-container > .elementor-motion-effects-layer{background-image:url("http://localhost/unit_customization_dashboard/wp-content/uploads/2023/03/Group-1-6-1.png");}.elementor-727 .elementor-element.elementor-element-894380d{transition:background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;}.elementor-727 .elementor-element.elementor-element-894380d > .elementor-background-overlay{transition:background 0.3s, border-radius 0.3s, opacity 0.3s;}.elementor-727 .elementor-element.elementor-element-a191ee3{text-align:center;}.elementor-727 .elementor-element.elementor-element-a191ee3 .elementor-heading-title{color:#27D07D;font-family:"Work Sans", Sans-serif;font-size:36px;font-weight:600;}.elementor-727 .elementor-element.elementor-element-631c342{text-align:center;}.elementor-727 .elementor-element.elementor-element-631c342 .elementor-heading-title{color:#FFFFFF;font-family:"Poppins", Sans-serif;font-size:20px;font-weight:500;}/* Start custom CSS for wp-widget-bp_course_search_widget, class: .elementor-element-ecc1926 */form#searchform {
+    max-width: 630px;
     margin: 0 auto;
 }
 .select2-container--default .select2-selection--single {
@@ -12,4 +7,17 @@ form#searchform {
 }
 .foy-search #s{
     border: none;
+    
+}
+.foy-search #searchform ul {
+    padding: 10px 10px 10px 10px;
+     display: flex;
+    justify-content: space-between;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+}
+.foy-search input#s {
+    margin-bottom: 0px;
 }/* End custom CSS */

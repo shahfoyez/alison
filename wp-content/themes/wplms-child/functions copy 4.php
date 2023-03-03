@@ -151,7 +151,7 @@ add_action('wp_ajax_nopriv_foy_add_certificate','foy_add_certificate_action');
  
 function foy_custom_product_fields() {
     global $product;
-    $allowed_products = array('522','568','648', '657');
+    $allowed_products = array('657','648','556');
     if(in_array($product->id, $allowed_products)  ){ ?>
         <style>
             .foy-suggestion-box {
@@ -218,255 +218,139 @@ function foy_custom_product_fields() {
             }
         </style>
         <div class="product-custom-fields">
+            <!-- Common -->
+            <!-- Input 1 -->
             <label for="field1">Course 01 </label>
-            <div class="searchform foy-searchform">
-                <input type="text" class="s" id="field1" name="custom_input_1" placeholder="Search courses..." value="" autocomplete="off" onkeyup="foyFunction1()">
-                <input type="text" class="s" id="course_id_1" name="course_id_1" placeholder="Id" value="" hidden>
-                <div id="foy-loading1" class="spinner-border" role="status">
-                    <img src="https://project12.wpengine.com/wp-content/uploads/2023/01/1494.gif">
-                </div>
-                <div class="foy-suggestion-box" id="foy-suggestion-box1">
-                    <!-- course suggestion -->
-                </div>
-            </div>
-            <script type="text/javascript">
-                function foyFunction1(){
-                    jQuery('.foy-suggestion-box').css( 'display', 'none' );
-                    jQuery('#foy-loading1').css( 'display', 'block' );
-                    var keyword = jQuery('#field1').val();
-                    if(keyword.length < 3){
-                        jQuery('#foy-suggestion-box1').html("");
-                        jQuery('#foy-suggestion-box1').css( 'display', 'none' );
-                        jQuery('#foy-loading1').css( 'display', 'none' );
-                    } else {
-                        jQuery.ajax({
-                            url: ajaxurl,
-                            type: 'get',
-                            data: { 
-                                action: 'data_fetch', 
-                                keyword: keyword  
-                            },
-                            success: function(data) { 
-                                jQuery('#foy-suggestion-box1').html( data );
-                                jQuery('#foy-suggestion-box1').css( 'display', 'block' );
-                                jQuery('#foy-loading1').css( 'display', 'none' );
-                            }         
-                        });
-                    }
-                } 
-            </script>
-            <!-- Input 2 -->
-            <label for="field2">Course 02</label>
-            <div class="searchform foy-searchform">
-                <input type="text" class="s" id="field2" name="custom_input_2" placeholder="Search courses..." value="" autocomplete="off" onkeyup="foyFunction2()">
-                <input type="text" class="s" id="course_id_2" name="course_id_2" placeholder="Id" value="" hidden>
-                <div id="foy-loading2" class="spinner-border" role="status">
-                    <img src="https://project12.wpengine.com/wp-content/uploads/2023/01/1494.gif">
-                </div>
-                <div class="foy-suggestion-box" id="foy-suggestion-box2">
-                    <!-- course suggestion -->
-                </div>
-            </div>
-            <script type="text/javascript">
-                function foyFunction2(){
-                    jQuery('.foy-suggestion-box').css( 'display', 'none' );
-                    jQuery('#foy-loading2').css( 'display', 'block' );
-                    var keyword = jQuery('#field2').val();
-                    if(keyword.length < 3){
-                        jQuery('#foy-suggestion-box2').html("");
-                        jQuery('#foy-suggestion-box2').css( 'display', 'none' );
-                        jQuery('#foy-loading2').css( 'display', 'none' );
-                    } else {
-                        jQuery.ajax({
-                            url: ajaxurl,
-                            type: 'get',
-                            data: { 
-                                action: 'data_fetch', 
-                                keyword: keyword  
-                            },
-                            success: function(data) { 
-                                jQuery('#foy-suggestion-box2').html( data );
-                                jQuery('#foy-suggestion-box2').css( 'display', 'block' );
-                                jQuery('#foy-loading2').css( 'display', 'none' );
-                            }         
-                        });
-                    }
-                }
-            </script>
-            <!-- Input 3 -->
-            <label for="field3">Course 03</label>
-            <div class="searchform foy-searchform">
-                <input type="text" class="s" id="field3" name="custom_input_3" placeholder="Search courses..." value="" autocomplete="off" onkeyup="foyFunction3()">
-                <input type="text" class="s" id="course_id_3" name="course_id_3" placeholder="Id" value="" hidden>
-
-                <div id="foy-loading3" class="spinner-border" role="status">
-                    <img src="https://project12.wpengine.com/wp-content/uploads/2023/01/1494.gif">
-                </div>
-                <div class="foy-suggestion-box" id="foy-suggestion-box3">
-                    <!-- course suggestion -->
-                </div>
-            </div>
-            <script type="text/javascript">
-                function foyFunction3(){
-                    jQuery('.foy-suggestion-box').css( 'display', 'none' );
-                    jQuery('#foy-loading3').css( 'display', 'block' );
-                    var keyword = jQuery('#field3').val();
-                    if(keyword.length < 3){
-                        jQuery('#foy-suggestion-box3').html("");
-                        jQuery('#foy-suggestion-box3').css( 'display', 'none' );
-                        jQuery('#foy-loading3').css( 'display', 'none' );
-                    } else {
-                        jQuery.ajax({
-                            url: ajaxurl,
-                            type: 'get',
-                            data: { 
-                                action: 'data_fetch', 
-                                keyword: keyword  
-                            },
-                            success: function(data) { 
-                                jQuery('#foy-suggestion-box3').html( data );
-                                jQuery('#foy-suggestion-box3').css( 'display', 'block' );
-                                jQuery('#foy-loading3').css( 'display', 'none' );
-                            }         
-                        });
-                    }
-                }
-            </script>
-            <!-- Input 4 -->
-            <?php 
-                $bundle_4 = array('657', '648');
-                if(in_array($product->id, $bundle_4)){ ?>
-                <label for="field4">Course 04</label>
                 <div class="searchform foy-searchform">
-                    <input type="text" class="s" id="field4" name="custom_input_4" placeholder="Search courses..." value="" autocomplete="off" onkeyup="foyFunction4()">
-                    <input type="text" class="s" id="course_id_4" name="course_id_4" placeholder="Id" value="" hidden>
-
-                    <div id="foy-loading4" class="spinner-border" role="status">
+                    <input type="text" class="s" id="field1" name="custom_input_1" placeholder="Search courses..." value="" autocomplete="off" onkeyup="foyFunction6(this)">
+                    <input type="text" class="s" id="course_id_1" name="course_id_1" placeholder="Id" value="" hidden>
+                    <div id="foy-loading" class="spinner-border" role="status">
                         <img src="https://project12.wpengine.com/wp-content/uploads/2023/01/1494.gif">
                     </div>
-                    <div class="foy-suggestion-box" id="foy-suggestion-box4">
+                    <div class="foy-suggestion-box" id="foy-suggestion-box1">
                         <!-- course suggestion -->
                     </div>
                 </div>
-                <script type="text/javascript">
-                    function foyFunction4(){
-                        jQuery('.foy-suggestion-box').css( 'display', 'none' );
-                        jQuery('#foy-loading4').css( 'display', 'block' );
-                        var keyword = jQuery('#field4').val();
-                        if(keyword.length < 3){
-                            jQuery('#foy-suggestion-box4').html("");
-                            jQuery('#foy-suggestion-box4').css( 'display', 'none' );
-                            jQuery('#foy-loading4').css( 'display', 'none' );
-                        } else {
-                            jQuery.ajax({
-                                url: ajaxurl,
-                                type: 'get',
-                                data: { 
-                                    action: 'data_fetch', 
-                                    keyword: keyword  
-                                },
-                                success: function(data) { 
-                                    jQuery('#foy-suggestion-box4').html( data );
-                                    jQuery('#foy-suggestion-box4').css( 'display', 'block' );
-                                    jQuery('#foy-loading4').css( 'display', 'none' );
-                                }         
-                            });
-                        }
-                    }
-                </script>
+                
+                <!-- Input 2 -->
+                <label for="field2">Course 02</label>
+                <div class="searchform foy-searchform">
+                    <input type="text" class="s" id="field2" name="custom_input_2" placeholder="Search courses..." value="" autocomplete="off" onkeyup="foyFunction6(this)">
+                    <input type="text" class="s" id="course_id_2" name="course_id_2" placeholder="Id" value="" hidden>
+                    <div id="foy-loading" class="spinner-border" role="status">
+                        <img src="https://project12.wpengine.com/wp-content/uploads/2023/01/1494.gif">
+                    </div>
+                    <div class="foy-suggestion-box" id="foy-suggestion-box2">
+                        <!-- course suggestion -->
+                    </div>
+                </div>
+                
+                <!-- Input 3 -->
+                <label for="field3">Course 03</label>
+                <div class="searchform foy-searchform">
+                    <input type="text" class="s" id="field3" name="custom_input_3" placeholder="Search courses..." value="" autocomplete="off" onkeyup="foyFunction6(this)">
+                    <input type="text" class="s" id="course_id_3" name="course_id_3" placeholder="Id" value="" hidden>
 
-            <?php }?>
-            <!-- Input 5 -->
+                    <div id="foy-loading" class="spinner-border" role="status">
+                        <img src="https://project12.wpengine.com/wp-content/uploads/2023/01/1494.gif">
+                    </div>
+                    <div class="foy-suggestion-box" id="foy-suggestion-box3">
+                        <!-- course suggestion -->
+                    </div>
+                </div>
+                <!-- Common Ends -->
             <?php 
-                $bundle_5 = array('648');
+                $bundle_4 = array('648');;
+                if(in_array($product->id, $bundle_4)){ ?>
+                    <!-- Input 4 -->
+                    <label for="field4">Course 04</label>
+                    <div class="searchform foy-searchform">
+                        <input type="text" class="s" id="field4" name="custom_input_4" placeholder="Search courses..." value="" autocomplete="off" onkeyup="foyFunction6(this)">
+                        <input type="text" class="s" id="course_id_4" name="course_id_4" placeholder="Id" value="" hidden>
+
+                        <div id="foy-loading" class="spinner-border" role="status">
+                            <img src="https://project12.wpengine.com/wp-content/uploads/2023/01/1494.gif">
+                        </div>
+                        <div class="foy-suggestion-box" id="foy-suggestion-box4">
+                            <!-- course suggestion -->
+                        </div>
+                    </div>
+            <?php }?>
+            <?php 
+                $bundle_5 = array('556');
                 if(in_array($product->id, $bundle_5)){ ?>
+                    <!-- Input 5 -->
                     <label for="field5">Course 05</label>
                     <div class="searchform foy-searchform">
-                        <input type="text" class="s" id="field5" name="custom_input_5" placeholder="Search courses..." value="" autocomplete="off" onkeyup="foyFunction6()">
-                        <input type="text" class="s" id="course_id_5" name="course_id_5" placeholder="Id" value="" hidden>
+                        <input type="text" class="s" id="field5" name="custom_input_5" placeholder="Search courses..." value="" autocomplete="off" onkeyup="foyFunction6(this)">
+                        <input type="text" id="course_id_5" name="course_id_5" placeholder="Id" value="" hidden>
 
-                        <div id="foy-loading5" class="spinner-border" role="status">
+                        <div id="foy-loading" class="spinner-border" role="status">
                             <img src="https://project12.wpengine.com/wp-content/uploads/2023/01/1494.gif">
                         </div>
                         <div class="foy-suggestion-box" id="foy-suggestion-box5">
                             <!-- course suggestion -->
                         </div>
                     </div>
-                    <script type="text/javascript">
-                        function foyFunction5(){
-                            jQuery('.foy-suggestion-box').css( 'display', 'none' );
-                            jQuery('#foy-loading5').css( 'display', 'block' );
-                            var keyword = jQuery('#field5').val();
-                            if(keyword.length < 3){
-                                jQuery('#foy-suggestion-box5').html("");
-                                jQuery('#foy-suggestion-box5').css( 'display', 'none' );
-                                jQuery('#foy-loading5').css( 'display', 'none' );
-                            } else {
-                                jQuery.ajax({
-                                    url: ajaxurl,
-                                    type: 'get',
-                                    data: { 
-                                        action: 'data_fetch', 
-                                        keyword: keyword  
-                                    },
-                                    success: function(data) { 
-                                        jQuery('#foy-suggestion-box5').html( data );
-                                        jQuery('#foy-suggestion-box5').css( 'display', 'block' );
-                                        jQuery('#foy-loading5').css( 'display', 'none' );
-                                    }         
-                                });
-                            }
-                        }
-                    </script>
             <?php }?>
 
             <script>
+                const inputs = document.querySelectorAll('.s');
+                console.log(inputs);
+                inputs.forEach(input => {
+                    input.addEventListener('click', () => {
+                        jQuery('.foy-suggestion-box').css( 'display', 'none' );
+                    });
+                });
                 function courseClicked(element){
+                    jQuery('.foy-suggestion-box').css( 'display', 'none' );
                     var courseText = element.lastElementChild.innerText;
                     var courseId = element.lastElementChild.id;
                     var grandParent = element.parentElement.parentElement;
                     var inputField = grandParent.firstElementChild;
                     var secondInputField = grandParent.children[1];
 
+                    // first input field
                     inputField.value = courseText;
-                    inputField.setAttribute("value", courseId);
-                    inputField.setAttribute("data-attribute", courseId);
+                    // inputField.setAttribute("value", courseId);
+                    // inputField.setAttribute("data-attribute", courseId);
 
-                    jQuery('.foy-suggestion-box').css( 'display', 'none' );
+                    //second input field (hidden field)
                     secondInputField.value = courseId;
-                    console.log(secondInputField);
-                    
-
-                    // var suggestionBox = element.parentElement;
-                    // suggestionBox.classList.add("foy-hide");
                 }
             </script>
-            <script type="text/javascript">
-                        function foyFunction5(){
-                            jQuery('.foy-suggestion-box').css( 'display', 'none' );
-                            jQuery('#foy-loading5').css( 'display', 'block' );
-                            var keyword = jQuery('#field5').val();
-                            if(keyword.length < 3){
-                                jQuery('#foy-suggestion-box5').html("");
-                                jQuery('#foy-suggestion-box5').css( 'display', 'none' );
-                                jQuery('#foy-loading5').css( 'display', 'none' );
-                            } else {
-                                jQuery.ajax({
-                                    url: ajaxurl,
-                                    type: 'get',
-                                    data: { 
-                                        action: 'data_fetch', 
-                                        keyword: keyword  
-                                    },
-                                    success: function(data) { 
-                                        jQuery('#foy-suggestion-box5').html( data );
-                                        jQuery('#foy-suggestion-box5').css( 'display', 'block' );
-                                        jQuery('#foy-loading5').css( 'display', 'none' );
-                                    }         
-                                });
-                            }
-                        }
-                    </script>
+            
+            <script>
+                function foyFunction6(element){
+                    let parent = element.parentElement;
+                    let loading = parent.children[2]; 
+                    let suggestionBox = parent.children[3];
+
+                    jQuery(suggestionBox).css( 'display', 'none' );
+                    jQuery(loading).css( 'display', 'block' );
+                    let keyword = jQuery(element).val();
+
+                    if(keyword.length < 3){
+                        jQuery(suggestionBox).html("");
+                        jQuery(suggestionBox).css( 'display', 'none' );
+                        jQuery(loading).css( 'display', 'none' );
+                    }else {
+                        jQuery.ajax({
+                            url: ajaxurl,
+                            type: 'get',
+                            data: { 
+                                action: 'data_fetch', 
+                                keyword: keyword  
+                            },
+                            success: function(data) { 
+                                jQuery(suggestionBox).html( data );
+                                jQuery(suggestionBox).css( 'display', 'block' );
+                                jQuery(loading).css( 'display', 'none' );
+                            }         
+                        });
+                    }
+                }
+            </script>
         </div>
     <?php }
 }
@@ -478,10 +362,8 @@ function foy_save_custom_fields_data( $cart_item_data, $product_id ) {
         $custom_input = "custom_input_$i";
         $course_id = "course_id_$i";
         if( isset( $_POST[$custom_input] ) ) {
-            $cart_item_data[$custom_input] = $_POST[$custom_input];
-            $cart_item_data[$course_id] =  $_POST[$course_id];
-        }else{
-            break;
+            $cart_item_data[$custom_input] = $_POST[$custom_input] ?? NULL;
+            $cart_item_data[$course_id] =  $_POST[$course_id] ?? NULL;
         }
     }
     return $cart_item_data;
@@ -497,10 +379,8 @@ function display_custom_cart_item_data($item_data, $cart_item)
         if (isset($cart_item[$custom_input])) {
             $item_data[] = array(
                 'key' => "Course $i",
-                'value' => $cart_item[$custom_input]
+                'value' => $cart_item[$custom_input] ?? Null
             );
-        }else{
-            break;
         }
     }
     return $item_data;
@@ -513,10 +393,8 @@ function save_custom_order_item_meta($item_id, $values)
         $custom_input = "custom_input_$i";
         $course_id = "course_id_$i";
         if (isset($values[$custom_input])) {
-            wc_add_order_item_meta($item_id, "Course_$i", $values[$custom_input] ?? '');
-            wc_add_order_item_meta($item_id, "id_$i", $values[$course_id] ?? '');
-        }else{
-            break;
+            wc_add_order_item_meta($item_id, "Course_$i", $values[$custom_input] ?? NULL);
+            wc_add_order_item_meta($item_id, "id_$i", $values[$course_id] ?? NULL);
         }
     }
 }
@@ -582,4 +460,69 @@ function data_fetch()
 }
 add_action('wp_ajax_data_fetch', 'data_fetch');
 add_action('wp_ajax_nopriv_data_fetch', 'data_fetch');
+
+// function exclude_category_home( $query ) {
+//     // if ( $query->is_home ) {
+//     $query->set( 'course-cat', '-46, -9, -23' );
+//     $query->set( 'posts_per_page', 2 ); 
+
+//     // }
+//     return $query;
+// }
+// add_filter( 'pre_get_posts', 'exclude_category_home' );
+
+ 
+function exclude_courses_from_category($query) {
+    if( !bp_is_my_profile() && !is_admin() ){
+        $tax_query = array(
+            array(
+                'taxonomy' => 'course-cat',
+                'field'    => 'term_id',
+                'terms'    => array(46),
+                'operator' => 'NOT IN',
+            ),
+        );
+        $query->set('tax_query', $tax_query);
+    }
+}
+add_action('pre_get_posts', 'exclude_courses_from_category');
+ 
+ 
+
+function foyez_ali()
+{
+    var_dump(is_admin());
+   
+
+    $args = array(
+        'post_type' => 'course',
+        'post_status' => 'publish',
+        'order' => 'DESC',
+        'posts_per_page' => 10,
+    );
+    $the_query = new WP_Query($args);
+
+    if ($the_query->have_posts()) {
+		while ($the_query->have_posts()) : $the_query->the_post();
+			$meta = get_post_meta(get_the_ID());
+			$product_meta = get_post_meta(get_the_ID(), 'vibe_students', true);
+	?>
+			<div class="foy-course-list col-md-4" onclick="courseClicked(this)">
+				<?php
+                    $default =  get_theme_file_uri('/assets/images/defaultCourse.png');
+                    $image_url = get_the_post_thumbnail_url(get_the_ID(), 'thumbnail');
+                    $img_url = $image_url ? $image_url : $default;
+				?>
+				<img src="<?php echo $img_url; ?>" style="height: 200px; width: 200px;">
+				<p id="<?php echo get_the_ID()?>"><?php the_title(); ?></p>
+			</div>
+			<hr>
+	<?php endwhile;
+		wp_reset_postdata();
+	}else{
+        echo "no course data available";
+    }
+}
+add_shortcode('foy_courses', 'foyez_ali');
+
  
