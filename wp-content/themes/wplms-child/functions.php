@@ -295,13 +295,13 @@ function foy_custom_product_fields() {
             <?php }?>
 
             <script>
-                const inputs = document.querySelectorAll('.s');
-                console.log(inputs);
-                inputs.forEach(input => {
-                    input.addEventListener('click', () => {
-                        jQuery('.foy-suggestion-box').css( 'display', 'none' );
-                    });
-                });
+                // const inputs = document.querySelectorAll('.s');
+                // console.log(inputs);
+                // inputs.forEach(input => {
+                //     input.addEventListener('click', () => {
+                //         jQuery('.foy-suggestion-box').css( 'display', 'none' );
+                //     });
+                // });
                 function courseClicked(element){
                     jQuery('.foy-suggestion-box').css( 'display', 'none' );
                     var courseText = element.lastElementChild.innerText;
